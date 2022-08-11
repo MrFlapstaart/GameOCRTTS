@@ -21,6 +21,7 @@ namespace GameOCRTTS
                 // copy screen with no Windows Border
                 g.CopyFromScreen(new Point(bounds.Left, bounds.Top + 50), Point.Empty, bounds.Size);
             }
+
             return bitmap;            
         }
         internal static Color GetColorFromCurrentPixel()
