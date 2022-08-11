@@ -26,7 +26,7 @@ namespace GameOCRTTS
         internal static Color GetColorFromCurrentPixel()
         {            
             Bitmap bitmap = new Bitmap(10, 10);
-
+             
             using (Graphics g = Graphics.FromImage(bitmap))
             {                
                 g.CopyFromScreen(new Point(Cursor.Position.X - 1, Cursor.Position.Y - 1), Point.Empty, bitmap.Size);
