@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GameOCRTTS
@@ -129,6 +128,7 @@ namespace GameOCRTTS
 
         private void selectColorButton_Click(object sender, EventArgs e)
         {
+            colorSelect.Color = _Brightest;
             if (colorSelect.ShowDialog() != DialogResult.OK)
                 return;
 
