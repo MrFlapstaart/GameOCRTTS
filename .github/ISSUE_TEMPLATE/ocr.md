@@ -2,6 +2,6 @@
 name: OCR
 about: Issue with text recognition.
 title: ''
-labels: backend
+labels: ocr
 assignees: MrFlapstaart
 ---
