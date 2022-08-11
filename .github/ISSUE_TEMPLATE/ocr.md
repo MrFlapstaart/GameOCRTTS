@@ -1,6 +1,6 @@
 ---
-name: Backend
-about: Issue with back-end (code)
+name: OCR
+about: Issue with text recognition.
 title: ''
 labels: backend
 assignees: MrFlapstaart
