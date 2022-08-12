@@ -15,7 +15,7 @@ namespace GameOCRTTS
                 
         public MainForm()
         {            
-            // register the event that is fired after the key press.
+            // Register the event that is fired after the key press.
             _Hook.KeyPressed += new EventHandler<KeyPressedEventArgs>(Hook_KeyPressed);
             // Register hotkey for OCR/TTS. Oem3 = `
             _Hook.RegisterHotKey(SpecialKeys.None, Keys.Oem3);
@@ -91,7 +91,7 @@ namespace GameOCRTTS
             byteStream.Position = 0;
 
             Logger.AddLog("Handle OCR.");
-            // Multiple steps make it easier to debug
+            // Multiple steps make it easier to debug.
             TextBlock block = OCR.GetTextFromTiffStream(byteStream.ToArray());
             string text = block.Text;
             string stripped = TextHelper.StripSpecialCharacters(text);
@@ -157,7 +157,7 @@ namespace GameOCRTTS
             distanceLabel.Text = _FadeDistance.ToString();
         }
 
-        // Context menu links
+        // Context menu links.
         private void contextMenuHelp_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/blob/master/README.md");
@@ -168,7 +168,7 @@ namespace GameOCRTTS
             System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS");
         }
 
-        // Issue tracker links
+        // Issue tracker links.
         private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
@@ -194,7 +194,7 @@ namespace GameOCRTTS
         {
             System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new");
         }
-
+        // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start($"https://github.com/MrFlapstaart/GameOCRTTS/blob/master/releases/version-checker/{_VersionNumber}.md");
@@ -204,6 +204,6 @@ namespace GameOCRTTS
         {
             MessageBox.Show($"GameOCRTTS version {_VersionNumber} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        // End of context menu links
+        // End of context menu links.
     }
 }
