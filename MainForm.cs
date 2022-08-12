@@ -92,17 +92,24 @@ namespace GameOCRTTS
 
             Logger.AddLog("Handle OCR.");
             // Multiple steps make it easier to debug
-            OCRResult ocrresult = OCR.GetTextFromTiffStream(byteStream.ToArray());
-            string text = ocrresult?.Result;
+            TextBlock block = OCR.GetTextFromTiffStream(byteStream.ToArray());
+            string text = block.Text;
             string stripped = TextHelper.StripSpecialCharacters(text);
-            ocrBox.Text = TextHelper.RemoveGarbageText(stripped);
-            ComposedBlock cblock = ocrresult.PrintSpace.ComposedBlock.OrderByDescending(x => x.WordsInComposedBlock).FirstOrDefault() ?? new ComposedBlock();
-            
+            ocrBox.Text = TextHelper.RemoveGarbageText(stripped);            
+            using (Graphics g = Graphics.FromImage(resultimage))
+            {
+                var pen = new Pen(Color.Red);
+                foreach (var line in block.Lines)
+                {
+                    g.DrawRectangle(pen, new Rectangle(line.HPos, line.VPos, line.Width, line.Height));
+                }
+            }
+
             if (processedImage.Image != null)
                 processedImage.Image.Dispose();
             processedImage.Image = new Bitmap(resultimage).Clone(
-                new Rectangle(cblock.HPos, cblock.VPos, 
-                cblock.Width, cblock.Height),
+                new Rectangle(block.HPos, block.VPos, 
+                block.Width, block.Height),
                 PixelFormat.DontCare);
 
             if (rawImage.Image != null)

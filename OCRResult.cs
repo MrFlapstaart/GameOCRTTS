@@ -51,7 +51,24 @@ namespace GameOCRTTS
 			get { return Words?.Count ?? 0; }
 			set { }
         }
-	}
+
+		[XmlIgnore]
+		public string Text
+        {
+			get 
+			{
+				var result = string.Join(" ", Words.Select(x => x.Content).ToList());
+				return result;
+			}
+            set { }
+        }
+
+        public override string ToString()
+        {
+			return $"{VPos},{Height} {Text}";
+        }
+
+    }
 
 	[XmlRoot(ElementName = "TextBlock")]
 	public class TextBlock : OCRDimBase
@@ -65,7 +82,25 @@ namespace GameOCRTTS
 			get { return Lines.Sum(x => x.WordsInLine); }
 			set { }
         }
-	}
+
+		private string _Text;
+		[XmlIgnore]
+		public string Text
+		{
+			get
+			{
+				var result = string.Join(" ", Lines.Select(x => x.Text).ToList());
+				return result + _Text;
+			}
+			set { _Text = value; }
+		}
+
+        public override string ToString()
+        {
+			return $"{HPos},{VPos},{Width},{Height} : {Text}";
+        }
+
+    }
 
 	[XmlRoot(ElementName = "ComposedBlock")]
 	public class ComposedBlock : OCRDimBase

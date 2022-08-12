@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 using Tesseract;
+using System.Text.RegularExpressions;
 
 namespace GameOCRTTS
 {
@@ -10,7 +12,7 @@ namespace GameOCRTTS
     {
         private static TesseractEngine _Engine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default);
 
-        internal static OCRResult GetTextFromTiffStream(byte[] image)
+        internal static TextBlock GetTextFromTiffStream(byte[] image)
         {
             try
             {                
@@ -28,8 +30,17 @@ namespace GameOCRTTS
                             result = (OCRResult)serializer.Deserialize(reader);
                         }
 
-                        result.Result = text;
-                        return result;                            
+                        ComposedBlock cblock = result.PrintSpace.ComposedBlock.OrderByDescending(x => x.WordsInComposedBlock).FirstOrDefault() ?? new ComposedBlock();
+                        TextBlock block = cblock.Blocks.OrderByDescending(x => x.WordsInBlock).FirstOrDefault() ?? new TextBlock();
+
+                        Regex rgx = new Regex("[^a-zA-Z0-9.,'?!: -]");
+                        foreach (var line in block.Lines)
+                        {
+                            line.Words.RemoveAll(x => string.IsNullOrEmpty(rgx.Replace(x.Content.Replace("|", "I"), "")));
+                        }
+                        block.Lines.RemoveAll(x => x.WordsInLine == 0);
+
+                        return block;                            
 
                     }
                 }                
@@ -37,7 +48,7 @@ namespace GameOCRTTS
             catch (Exception ex)
             {
                 Trace.TraceError($"Error: {ex.Message}\nStack: {ex.StackTrace}");
-                return new OCRResult() { Result = $"Error: {ex.Message}" };
+                return new TextBlock() { Text = $"Error: {ex.Message}" };
             }            
         }
     }
