@@ -29,6 +29,7 @@ namespace GameOCRTTS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ocrButton = new System.Windows.Forms.Button();
             this.ocrBox = new System.Windows.Forms.TextBox();
@@ -48,9 +49,21 @@ namespace GameOCRTTS
             this.colorPanel = new System.Windows.Forms.Panel();
             this.distanceLabel = new System.Windows.Forms.Label();
             this.selectColorButton = new System.Windows.Forms.Button();
+            this.contextMenuGitHub = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssues = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssuesDesign = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssuesOCR = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssuesTTS = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssuesDontKnow = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuIssuesOther = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuVersionCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).BeginInit();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // ocrButton
@@ -214,11 +227,98 @@ namespace GameOCRTTS
             this.selectColorButton.UseVisualStyleBackColor = true;
             this.selectColorButton.Click += new System.EventHandler(this.selectColorButton_Click);
             // 
+            // contextMenuGitHub
+            // 
+            this.contextMenuGitHub.Name = "contextMenuGitHub";
+            this.contextMenuGitHub.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuGitHub.Text = "GitHub page";
+            this.contextMenuGitHub.Click += new System.EventHandler(this.contextMenuGitHub_Click);
+            // 
+            // contextMenuHelp
+            // 
+            this.contextMenuHelp.Name = "contextMenuHelp";
+            this.contextMenuHelp.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuHelp.Text = "Help";
+            this.contextMenuHelp.Click += new System.EventHandler(this.contextMenuHelp_Click);
+            // 
+            // contextMenuIssues
+            // 
+            this.contextMenuIssues.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuIssuesDesign,
+            this.contextMenuIssuesOCR,
+            this.contextMenuIssuesTTS,
+            this.contextMenuIssuesDontKnow,
+            this.contextMenuIssuesOther});
+            this.contextMenuIssues.Name = "contextMenuIssues";
+            this.contextMenuIssues.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssues.Text = "Problems?";
+            // 
+            // contextMenuIssuesDesign
+            // 
+            this.contextMenuIssuesDesign.Name = "contextMenuIssuesDesign";
+            this.contextMenuIssuesDesign.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesDesign.Text = "Design";
+            this.contextMenuIssuesDesign.Click += new System.EventHandler(this.contextMenuIssuesDesign_Click);
+            // 
+            // contextMenuIssuesOCR
+            // 
+            this.contextMenuIssuesOCR.Name = "contextMenuIssuesOCR";
+            this.contextMenuIssuesOCR.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesOCR.Text = "OCR";
+            this.contextMenuIssuesOCR.Click += new System.EventHandler(this.contextMenuIssuesOCR_Click);
+            // 
+            // contextMenuIssuesTTS
+            // 
+            this.contextMenuIssuesTTS.Name = "contextMenuIssuesTTS";
+            this.contextMenuIssuesTTS.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesTTS.Text = "TTS";
+            this.contextMenuIssuesTTS.Click += new System.EventHandler(this.contextMenuIssuesTTS_Click);
+            // 
+            // contextMenuIssuesDontKnow
+            // 
+            this.contextMenuIssuesDontKnow.Name = "contextMenuIssuesDontKnow";
+            this.contextMenuIssuesDontKnow.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesDontKnow.Text = "I don\'t know";
+            this.contextMenuIssuesDontKnow.Click += new System.EventHandler(this.contextMenuIssuesDontKnow_Click);
+            // 
+            // contextMenuIssuesOther
+            // 
+            this.contextMenuIssuesOther.Name = "contextMenuIssuesOther";
+            this.contextMenuIssuesOther.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesOther.Text = "Other";
+            this.contextMenuIssuesOther.Click += new System.EventHandler(this.contextMenuIssuesOther_Click);
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuGitHub,
+            this.contextMenuHelp,
+            this.contextMenuIssues,
+            this.contextMenuVersionCheck,
+            this.contextMenuAbout});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(181, 136);
+            // 
+            // contextMenuVersionCheck
+            // 
+            this.contextMenuVersionCheck.Name = "contextMenuVersionCheck";
+            this.contextMenuVersionCheck.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuVersionCheck.Text = "Check for updates";
+            this.contextMenuVersionCheck.Click += new System.EventHandler(this.contextMenuVersionCheck_Click);
+            // 
+            // contextMenuAbout
+            // 
+            this.contextMenuAbout.Name = "contextMenuAbout";
+            this.contextMenuAbout.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuAbout.Text = "About";
+            this.contextMenuAbout.Click += new System.EventHandler(this.contextMenuAbout_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 334);
+            this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.colorPanel);
@@ -243,6 +343,7 @@ namespace GameOCRTTS
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +369,17 @@ namespace GameOCRTTS
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.Button selectColorButton;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuGitHub;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuHelp;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssues;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesDesign;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesOCR;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesTTS;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesDontKnow;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesOther;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuVersionCheck;
+        private System.Windows.Forms.ToolStripMenuItem contextMenuAbout;
     }
 }
 

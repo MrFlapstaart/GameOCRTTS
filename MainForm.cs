@@ -12,6 +12,7 @@ namespace GameOCRTTS
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
+        private readonly string _VersionNumber = "1.0";
                 
         public MainForm()
         {            
@@ -156,5 +157,54 @@ namespace GameOCRTTS
             _FadeDistance = distanceBar.Value;
             distanceLabel.Text = _FadeDistance.ToString();
         }
+
+        // Context menu links
+        private void contextMenuHelp_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/blob/master/README.md");
+        }
+
+        private void contextMenuGitHub_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS");
+        }
+
+        // Issue tracker links
+        private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
+        }
+
+        private void contextMenuIssuesOCR_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
+
+        }
+
+        private void contextMenuIssuesTTS_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=tts&template=tts.md&title=");
+        }
+
+        private void contextMenuIssuesDontKnow_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new");
+        }
+
+        private void contextMenuIssuesOther_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new");
+        }
+
+        private void contextMenuVersionCheck_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($"https://github.com/MrFlapstaart/GameOCRTTS/blob/master/releases/version-checker/{_VersionNumber}.md");
+        }
+
+        private void contextMenuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"GameOCRTTS version {_VersionNumber} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        // End of context menu links
     }
 }
