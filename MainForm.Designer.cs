@@ -74,7 +74,7 @@ namespace GameOCRTTS
             this.ocrButton.TabIndex = 0;
             this.ocrButton.Text = "Test OCR...";
             this.ocrButton.UseVisualStyleBackColor = true;
-            this.ocrButton.Click += new System.EventHandler(this.button1_Click);
+            this.ocrButton.Click += new System.EventHandler(this.ocrButton_Click);
             // 
             // ocrBox
             // 

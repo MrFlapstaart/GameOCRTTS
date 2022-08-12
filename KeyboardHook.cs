@@ -22,7 +22,7 @@ namespace GameOCRTTS
 
             public Window()
             {
-                // create the handle for the window.
+                // Create the handle for the window.
                 this.CreateHandle(new CreateParams());
             }
 
@@ -34,14 +34,14 @@ namespace GameOCRTTS
             {
                 base.WndProc(ref m);
 
-                // check if we got a hot key pressed.
+                // Check if we got a hot key pressed.
                 if (m.Msg == WM_HOTKEY)
                 {
-                    // get the keys.
+                    // Get the keys.
                     Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
                     SpecialKeys modifier = (SpecialKeys)((int)m.LParam & 0xFFFF);
 
-                    // invoke the event to notify the parent.
+                    // Invoke the event to notify the parent.
                     if (KeyPressed != null)
                         KeyPressed(this, new KeyPressedEventArgs(modifier, key));
                 }
@@ -64,7 +64,7 @@ namespace GameOCRTTS
 
         public KeyboardHook()
         {
-            // register the event of the inner native window.
+            // Register the event of the inner native window.
             _window.KeyPressed += delegate (object sender, KeyPressedEventArgs args)
             {
                 if (KeyPressed != null)
@@ -79,12 +79,12 @@ namespace GameOCRTTS
         /// <param name="key">The key itself that is associated with the hot key.</param>
         public void RegisterHotKey(SpecialKeys modifier, Keys key)
         {
-            // increment the counter.
+            // Increment the counter.
             _currentId = _currentId + 1;
 
-            // register the hot key.
+            // Register the hot key.
             if (!RegisterHotKey(_window.Handle, _currentId, (uint)modifier, (uint)key))
-                throw new InvalidOperationException("Couldn’t register the hot key.");
+                throw new InvalidOperationException("Couldn’t register the hot key, see https://github.com/MrFlapstaart/GameOCRTTS#couldnt-register-the-hot-key");
         }
 
         /// <summary>

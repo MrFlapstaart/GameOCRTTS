@@ -13,7 +13,7 @@ namespace GameOCRTTS
             
             using (Graphics g = Graphics.FromImage(bitmap))
             {
-                // copy screen with no Windows Border
+                // Copy screen with no Windows Border
                 g.CopyFromScreen(new Point(bounds.Left, bounds.Top + 50), Point.Empty, bounds.Size);
             }
 

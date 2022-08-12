@@ -50,7 +50,7 @@ namespace GameOCRTTS
             }
         }
                 
-        private void button1_Click(object sender, EventArgs e)
+        private void ocrButton_Click(object sender, EventArgs e)
         {
             if (imageOpenDialog.ShowDialog() != DialogResult.OK)
                 return;
