@@ -11,25 +11,25 @@ namespace GameOCRTTS
 	public class String
 	{
 		[XmlAttribute(AttributeName = "ID")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 
 		[XmlAttribute(AttributeName = "WC")]
 		public string WC { get; set; }
 
 		[XmlAttribute(AttributeName = "CONTENT")]
-		public string CONTENT { get; set; }
+		public string Content { get; set; }
 	}
 
 	[XmlRoot(ElementName = "TextLine")]
@@ -39,19 +39,19 @@ namespace GameOCRTTS
 		public List<String> String { get; set; }
 
 		[XmlAttribute(AttributeName = "ID")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 
 		[XmlElement(ElementName = "SP")]
 		public List<SP> SP { get; set; }
@@ -64,19 +64,19 @@ namespace GameOCRTTS
 		public List<TextLine> TextLine { get; set; }
 
 		[XmlAttribute(AttributeName = "ID")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 	}
 
 	[XmlRoot(ElementName = "ComposedBlock")]
@@ -86,32 +86,32 @@ namespace GameOCRTTS
 		public TextBlock TextBlock { get; set; }
 
 		[XmlAttribute(AttributeName = "ID")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 	}
 
 	[XmlRoot(ElementName = "SP")]
 	public class SP
 	{
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 	}
 
 	[XmlRoot(ElementName = "PrintSpace")]
@@ -121,16 +121,16 @@ namespace GameOCRTTS
 		public List<ComposedBlock> ComposedBlock { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPOS { get; set; }
+		public string HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPOS { get; set; }
+		public string VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 	}
 
 	[XmlRoot(ElementName = "Page")]
@@ -140,15 +140,15 @@ namespace GameOCRTTS
 		public PrintSpace PrintSpace { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string WIDTH { get; set; }
+		public string Width { get; set; }
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string HEIGHT { get; set; }
+		public string Height { get; set; }
 
 		[XmlAttribute(AttributeName = "PHYSICAL_IMG_NR")]
-		public string PHYSICAL_IMG_NR { get; set; }
+		public string PhysicalImageNumber { get; set; }
 
 		[XmlAttribute(AttributeName = "ID")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 	}
 }
