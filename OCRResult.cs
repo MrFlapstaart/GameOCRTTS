@@ -13,16 +13,16 @@ namespace GameOCRTTS
 		public string Id { get; set; }
 
 		[XmlAttribute(AttributeName = "HPOS")]
-		public string HPos { get; set; }
+		public int HPos { get; set; }
 
 		[XmlAttribute(AttributeName = "VPOS")]
-		public string VPos { get; set; }
+		public int VPos { get; set; }
 
 		[XmlAttribute(AttributeName = "WIDTH")]
-		public string Width { get; set; }
+		public int Width { get; set; } = 1;
 
 		[XmlAttribute(AttributeName = "HEIGHT")]
-		public string Height { get; set; }
+		public int Height { get; set; } = 1;
 
 	}
 
@@ -40,24 +40,45 @@ namespace GameOCRTTS
 	public class TextLine : OCRDimBase
 	{
 		[XmlElement(ElementName = "String")]
-		public List<TextString> TextString { get; set; }
+		public List<TextString> Words { get; set; }
 
 		[XmlElement(ElementName = "SP")]
 		public List<SP> SP { get; set; }
+
+		[XmlIgnore]
+		public int WordsInLine
+        {
+			get { return Words?.Count ?? 0; }
+			set { }
+        }
 	}
 
 	[XmlRoot(ElementName = "TextBlock")]
 	public class TextBlock : OCRDimBase
 	{
 		[XmlElement(ElementName = "TextLine")]
-		public List<TextLine> TextLine { get; set; }		
+		public List<TextLine> Lines { get; set; } = new List<TextLine>();
+
+		[XmlIgnore]
+		public int WordsInBlock
+        {
+			get { return Lines.Sum(x => x.WordsInLine); }
+			set { }
+        }
 	}
 
 	[XmlRoot(ElementName = "ComposedBlock")]
 	public class ComposedBlock : OCRDimBase
 	{
 		[XmlElement(ElementName = "TextBlock")]
-		public TextBlock TextBlock { get; set; }		
+		public List<TextBlock> Blocks { get; set; } = new List<TextBlock>();
+
+		[XmlIgnore]
+		public int WordsInComposedBlock
+        {
+			get { return Blocks.Sum(x => x.WordsInBlock); }
+			set { }
+        }
 	}
 
 	[XmlRoot(ElementName = "SP")]
@@ -69,14 +90,14 @@ namespace GameOCRTTS
 	public class PrintSpace : OCRDimBase
 	{
 		[XmlElement(ElementName = "ComposedBlock")]
-		public List<ComposedBlock> ComposedBlock { get; set; }		
+		public List<ComposedBlock> ComposedBlock { get; set; } = new List<ComposedBlock>();
 	}
 
 	[XmlRoot(ElementName = "Page")]
 	public class OCRResult
 	{
 		[XmlElement(ElementName = "PrintSpace")]
-		public PrintSpace PrintSpace { get; set; }
+		public PrintSpace PrintSpace { get; set; } = new PrintSpace();
 
 		[XmlAttribute(AttributeName = "WIDTH")]
 		public string Width { get; set; }
@@ -89,5 +110,8 @@ namespace GameOCRTTS
 
 		[XmlAttribute(AttributeName = "ID")]
 		public string Id { get; set; }
+
+		[XmlIgnore]
+		public string Result { get; set; }
 	}
 }

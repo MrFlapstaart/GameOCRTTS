@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -90,12 +91,18 @@ namespace GameOCRTTS
             byteStream.Position = 0;
 
             Logger.AddLog("Handle OCR.");
-            ocrBox.Text = HandleOCR(byteStream.ToArray());
-
+            // Multiple steps make it easier to debug
+            OCRResult ocrresult = OCR.GetTextFromTiffStream(byteStream.ToArray());
+            string text = ocrresult?.Result;
+            string stripped = TextHelper.StripSpecialCharacters(text);
+            ocrBox.Text = TextHelper.RemoveGarbageText(stripped);
+            ComposedBlock cblock = ocrresult.PrintSpace.ComposedBlock.OrderByDescending(x => x.WordsInComposedBlock).FirstOrDefault() ?? new ComposedBlock();
+            
             if (processedImage.Image != null)
                 processedImage.Image.Dispose();
             processedImage.Image = new Bitmap(resultimage).Clone(
-                new Rectangle(0, 0, resultimage.Width, resultimage.Height),
+                new Rectangle(cblock.HPos, cblock.VPos, 
+                cblock.Width, cblock.Height),
                 PixelFormat.DontCare);
 
             if (rawImage.Image != null)
@@ -115,16 +122,7 @@ namespace GameOCRTTS
             //bitmap.Save(@"c:\temp\ocrraw.png", ImageFormat.Png);
             //resultimage.Save(@"c:\temp\ocrproc.png", ImageFormat.Png);
         }
-
-        private string HandleOCR(byte[] image)
-        {
-            // Multiple steps make it easier to debug
-            string text = OCR.GetTextFromTiffStream(image);
-            string stripped = TextHelper.StripSpecialCharacters(text);
-            string result = TextHelper.RemoveGarbageText(stripped);
-            return result;
-        }
-                                       
+                                                       
         private void speakButton_Click(object sender, EventArgs e)
         {
             TTS.SpeakOut(ocrBox.Text);

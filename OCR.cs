@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Xml.Serialization;
 using Tesseract;
 
 namespace GameOCRTTS
@@ -8,7 +10,7 @@ namespace GameOCRTTS
     {
         private static TesseractEngine _Engine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default);
 
-        internal static string GetTextFromTiffStream(byte[] image)
+        internal static OCRResult GetTextFromTiffStream(byte[] image)
         {
             try
             {                
@@ -19,16 +21,24 @@ namespace GameOCRTTS
                         string text = page.GetText()?.Replace("\n", " ");
 
                         string xml = page.GetAltoText(1);
-                        return text;                            
+                        var serializer = new XmlSerializer(typeof(OCRResult));
+                        OCRResult result = new OCRResult();
+                        using (TextReader reader = new StringReader(xml))
+                        {
+                            result = (OCRResult)serializer.Deserialize(reader);
+                        }
+
+                        result.Result = text;
+                        return result;                            
+
                     }
                 }                
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Trace.TraceError(e.ToString());
-            }
-
-            return "Error";
+                Trace.TraceError($"Error: {ex.Message}\nStack: {ex.StackTrace}");
+                return new OCRResult() { Result = $"Error: {ex.Message}" };
+            }            
         }
     }
 }
