@@ -34,17 +34,17 @@ namespace GameOCRTTS
             this.ocrBox = new System.Windows.Forms.TextBox();
             this.speakButton = new System.Windows.Forms.Button();
             this.logBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ocrBoxLabel = new System.Windows.Forms.Label();
+            this.logBoxLabel = new System.Windows.Forms.Label();
             this.rawImage = new System.Windows.Forms.PictureBox();
             this.processedImage = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.rawImageLabel = new System.Windows.Forms.Label();
+            this.processedImageLabel = new System.Windows.Forms.Label();
             this.garbageButton = new System.Windows.Forms.Button();
             this.imageOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.colorSelect = new System.Windows.Forms.ColorDialog();
             this.distanceBar = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
+            this.distanceBarLabel = new System.Windows.Forms.Label();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.distanceLabel = new System.Windows.Forms.Label();
             this.selectColorButton = new System.Windows.Forms.Button();
@@ -95,23 +95,23 @@ namespace GameOCRTTS
             this.logBox.Size = new System.Drawing.Size(450, 120);
             this.logBox.TabIndex = 3;
             // 
-            // label1
+            // ocrBoxLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Recognized Text";
+            this.ocrBoxLabel.AutoSize = true;
+            this.ocrBoxLabel.Location = new System.Drawing.Point(12, 38);
+            this.ocrBoxLabel.Name = "ocrBoxLabel";
+            this.ocrBoxLabel.Size = new System.Drawing.Size(88, 13);
+            this.ocrBoxLabel.TabIndex = 4;
+            this.ocrBoxLabel.Text = "Recognized Text";
             // 
-            // label2
+            // logBoxLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 185);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Log";
+            this.logBoxLabel.AutoSize = true;
+            this.logBoxLabel.Location = new System.Drawing.Point(12, 185);
+            this.logBoxLabel.Name = "logBoxLabel";
+            this.logBoxLabel.Size = new System.Drawing.Size(25, 13);
+            this.logBoxLabel.TabIndex = 5;
+            this.logBoxLabel.Text = "Log";
             // 
             // rawImage
             // 
@@ -131,23 +131,23 @@ namespace GameOCRTTS
             this.processedImage.TabIndex = 7;
             this.processedImage.TabStop = false;
             // 
-            // label3
+            // rawImageLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(465, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Screenshot";
+            this.rawImageLabel.AutoSize = true;
+            this.rawImageLabel.Location = new System.Drawing.Point(465, 38);
+            this.rawImageLabel.Name = "rawImageLabel";
+            this.rawImageLabel.Size = new System.Drawing.Size(61, 13);
+            this.rawImageLabel.TabIndex = 8;
+            this.rawImageLabel.Text = "Screenshot";
             // 
-            // label4
+            // processedImageLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(465, 185);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Processed Image";
+            this.processedImageLabel.AutoSize = true;
+            this.processedImageLabel.Location = new System.Drawing.Point(465, 185);
+            this.processedImageLabel.Name = "processedImageLabel";
+            this.processedImageLabel.Size = new System.Drawing.Size(89, 13);
+            this.processedImageLabel.TabIndex = 9;
+            this.processedImageLabel.Text = "Processed Image";
             // 
             // garbageButton
             // 
@@ -178,14 +178,14 @@ namespace GameOCRTTS
             this.distanceBar.Value = 15;
             this.distanceBar.Scroll += new System.EventHandler(this.distanceBar_Scroll);
             // 
-            // label5
+            // distanceBarLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(475, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Fade distance:";
+            this.distanceBarLabel.AutoSize = true;
+            this.distanceBarLabel.Location = new System.Drawing.Point(475, 17);
+            this.distanceBarLabel.Name = "distanceBarLabel";
+            this.distanceBarLabel.Size = new System.Drawing.Size(77, 13);
+            this.distanceBarLabel.TabIndex = 13;
+            this.distanceBarLabel.Text = "Fade distance:";
             // 
             // colorPanel
             // 
@@ -222,14 +222,14 @@ namespace GameOCRTTS
             this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.colorPanel);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.distanceBarLabel);
             this.Controls.Add(this.garbageButton);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.processedImageLabel);
+            this.Controls.Add(this.rawImageLabel);
             this.Controls.Add(this.processedImage);
             this.Controls.Add(this.rawImage);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.logBoxLabel);
+            this.Controls.Add(this.ocrBoxLabel);
             this.Controls.Add(this.logBox);
             this.Controls.Add(this.speakButton);
             this.Controls.Add(this.ocrBox);
@@ -254,17 +254,17 @@ namespace GameOCRTTS
         private System.Windows.Forms.TextBox ocrBox;
         private System.Windows.Forms.Button speakButton;
         private System.Windows.Forms.TextBox logBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ocrBoxLabel;
+        private System.Windows.Forms.Label logBoxLabel;
         private System.Windows.Forms.PictureBox rawImage;
         private System.Windows.Forms.PictureBox processedImage;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label rawImageLabel;
+        private System.Windows.Forms.Label processedImageLabel;
         private System.Windows.Forms.Button garbageButton;
         private System.Windows.Forms.OpenFileDialog imageOpenDialog;
         private System.Windows.Forms.ColorDialog colorSelect;
         private System.Windows.Forms.TrackBar distanceBar;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label distanceBarLabel;
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.Label distanceLabel;
         private System.Windows.Forms.Button selectColorButton;
