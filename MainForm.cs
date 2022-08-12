@@ -55,11 +55,21 @@ namespace GameOCRTTS
                 return;
             
             Logger.Start();
-            Logger.AddLog("Opening file");                        
-            Image testimage = Bitmap.FromFile(imageOpenDialog.FileName);
-            Bitmap bitmap = new Bitmap(testimage);
+            Logger.AddLog("Opening file");
+            try
+            {
+                Image testimage = Bitmap.FromFile(imageOpenDialog.FileName);
+                Bitmap bitmap = new Bitmap(testimage);
+                ProcessImage(bitmap);
+            }
+            catch
+            {
+                Logger.AddLog($"Error opening image file");
+                logBox.Text = Logger.Finish();
+                MessageBox.Show("This is not a valid image file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            ProcessImage(bitmap);
+            
         }
 
         private void ProcessImage(Bitmap bitmap)
