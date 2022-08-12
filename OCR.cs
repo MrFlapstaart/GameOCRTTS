@@ -32,13 +32,9 @@ namespace GameOCRTTS
 
                         ComposedBlock cblock = result.PrintSpace.ComposedBlock.OrderByDescending(x => x.WordsInComposedBlock).FirstOrDefault() ?? new ComposedBlock();
                         TextBlock block = cblock.Blocks.OrderByDescending(x => x.WordsInBlock).FirstOrDefault() ?? new TextBlock();
-
-                        Regex rgx = new Regex("[^a-zA-Z0-9.,'?!: -]");
-                        foreach (var line in block.Lines)
-                        {
-                            line.Words.RemoveAll(x => string.IsNullOrEmpty(rgx.Replace(x.Content.Replace("|", "I"), "")));
-                        }
-                        block.Lines.RemoveAll(x => x.WordsInLine == 0);
+                        block = TextHelper.ProcessTextBlock(block);
+                        if (block.Lines.Count > 0)
+                            ResetBlockBoundaries(block);
 
                         return block;                            
 
@@ -50,6 +46,22 @@ namespace GameOCRTTS
                 Trace.TraceError($"Error: {ex.Message}\nStack: {ex.StackTrace}");
                 return new TextBlock() { Text = $"Error: {ex.Message}" };
             }            
+        }
+
+        private static void ResetBlockBoundaries(TextBlock block)
+        {
+            foreach (var line in block.Lines)
+            {
+                line.HPos = line.Words.Min(x => x.HPos);
+                line.VPos = line.Words.Min(x => x.VPos);
+                line.Width = line.Words.Max(x => x.HPos + x.Width) - line.HPos;
+                line.Height = line.Words.Max(x => x.VPos + x.Height) - line.VPos;
+            }
+
+            block.HPos = block.Lines.Min(x => x.HPos);
+            block.VPos = block.Lines.Min(x => x.VPos);
+            block.Width = block.Lines.Max(x => x.HPos + x.Width) - block.HPos + 1;
+            block.Height = block.Lines.Max(x => x.VPos + x.Height) - block.VPos + 1;
         }
     }
 }

@@ -65,7 +65,7 @@ namespace GameOCRTTS
 
         public override string ToString()
         {
-			return $"{VPos},{Height} {Text}";
+			return $"{HPos},{VPos},{Width},{Height} : {Text}";
         }
 
     }

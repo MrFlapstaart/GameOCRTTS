@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace GameOCRTTS
@@ -52,6 +53,50 @@ namespace GameOCRTTS
             }
 
             return result.ToString();
+        }
+
+        internal static TextBlock ProcessTextBlock(TextBlock block)
+        {
+            Regex rgxspec = new Regex("[^a-zA-Z0-9.,'?!: -]");
+            foreach (var line in block.Lines)
+            {
+                line.Words.RemoveAll(x => string.IsNullOrEmpty(rgxspec.Replace(x.Content.Replace("|", "I"), "").Trim()));
+                line.Words.RemoveAll(x => !IsValidWord(x.Content));                
+            }
+            block.Lines.RemoveAll(x => x.WordsInLine == 1 && x.Text.Length <= 2);
+            block.Lines.RemoveAll(x => x.WordsInLine == 0);
+
+            return block;
+        }
+
+        private static bool IsValidWord(string word)
+        {
+            Regex rgx = new Regex("[^a-zA-Z0-9']");
+            Regex rgxnum = new Regex("[^0-9]");
+            Regex rgxvowel = new Regex("[^aeiouy]");
+
+            string strip = rgx.Replace(word, "")?.ToLower()?.Trim();
+            if (string.IsNullOrEmpty(strip))
+                return false;
+
+            if (strip.Length == 1 && strip != "i" && strip != "a")
+                return false;
+                       
+            string numbers = rgxnum.Replace(word, "");
+            bool onlynumbers = numbers.Length == strip.Length && numbers.Length > 0;            
+            int vowels = rgxvowel.Replace(strip, "").Length;
+
+            if (strip.Length == 1 && !onlynumbers && strip != "i" && strip != "a")
+                return false;
+
+
+            if (!word.StartsWith("..") && strip.Length <= 5 && strip.Length > 1 && !onlynumbers && !strip.StartsWith("hm"))
+            {
+                if (vowels == 0 || vowels == strip.Length)
+                    return false;
+            }
+
+            return true;
         }
 
         internal static string StripSpecialCharacters(string text)
