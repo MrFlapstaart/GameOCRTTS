@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tesseract;
 
 namespace GameOCRTTS
@@ -21,6 +17,8 @@ namespace GameOCRTTS
                     using (var page = _Engine.Process(img, PageSegMode.Auto))
                     {
                         string text = page.GetText()?.Replace("\n", " ");
+
+                        string xml = page.GetAltoText(1);
                         return text;                            
                     }
                 }                

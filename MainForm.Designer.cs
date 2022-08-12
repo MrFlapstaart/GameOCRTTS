@@ -43,11 +43,11 @@ namespace GameOCRTTS
             this.garbageButton = new System.Windows.Forms.Button();
             this.imageOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.colorSelect = new System.Windows.Forms.ColorDialog();
-            this.selectColorButton = new DevExpress.XtraEditors.SimpleButton();
             this.distanceBar = new System.Windows.Forms.TrackBar();
             this.label5 = new System.Windows.Forms.Label();
             this.colorPanel = new System.Windows.Forms.Panel();
             this.distanceLabel = new System.Windows.Forms.Label();
+            this.selectColorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).BeginInit();
@@ -167,18 +167,6 @@ namespace GameOCRTTS
             // 
             this.colorSelect.AnyColor = true;
             // 
-            // selectColorButton
-            // 
-            this.selectColorButton.Location = new System.Drawing.Point(306, 12);
-            this.selectColorButton.Name = "selectColorButton";
-            this.selectColorButton.Size = new System.Drawing.Size(126, 23);
-            this.selectColorButton.TabIndex = 11;
-            this.selectColorButton.Text = "Select Text Color...";
-            this.selectColorButton.ToolTip = "Select the brightest color of the text balloon in the game. You can use Paint to " +
-    "paste the screenshot and use its Pick Color to see what color it is.";
-            this.selectColorButton.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            this.selectColorButton.Click += new System.EventHandler(this.selectColorButton_Click);
-            // 
             // distanceBar
             // 
             this.distanceBar.Location = new System.Drawing.Point(558, 12);
@@ -215,15 +203,25 @@ namespace GameOCRTTS
             this.distanceLabel.TabIndex = 15;
             this.distanceLabel.Text = "0";
             // 
+            // selectColorButton
+            // 
+            this.selectColorButton.Location = new System.Drawing.Point(306, 12);
+            this.selectColorButton.Name = "selectColorButton";
+            this.selectColorButton.Size = new System.Drawing.Size(127, 23);
+            this.selectColorButton.TabIndex = 16;
+            this.selectColorButton.Text = "Select Text Color...";
+            this.selectColorButton.UseVisualStyleBackColor = true;
+            this.selectColorButton.Click += new System.EventHandler(this.selectColorButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 334);
+            this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.garbageButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -264,11 +262,11 @@ namespace GameOCRTTS
         private System.Windows.Forms.Button garbageButton;
         private System.Windows.Forms.OpenFileDialog imageOpenDialog;
         private System.Windows.Forms.ColorDialog colorSelect;
-        private DevExpress.XtraEditors.SimpleButton selectColorButton;
         private System.Windows.Forms.TrackBar distanceBar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel colorPanel;
         private System.Windows.Forms.Label distanceLabel;
+        private System.Windows.Forms.Button selectColorButton;
     }
 }
 
