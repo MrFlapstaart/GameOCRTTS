@@ -32,8 +32,13 @@ namespace GameOCRTTS
 		[XmlAttribute(AttributeName = "WC")]
 		public string WC { get; set; }
 
+		private string _content;
 		[XmlAttribute(AttributeName = "CONTENT")]
-		public string Content { get; set; }
+		public string Content
+		{
+			get { return _content; }
+			set { _content = value?.Replace("|", "I")?.Replace("[","I"); }
+		}
 	}
 
 	[XmlRoot(ElementName = "TextLine")]

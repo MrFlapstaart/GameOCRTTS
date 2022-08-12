@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -58,11 +60,20 @@ namespace GameOCRTTS
         internal static TextBlock ProcessTextBlock(TextBlock block)
         {
             Regex rgxspec = new Regex("[^a-zA-Z0-9.,'?!: -]");
+            List<TextString> words = new List<TextString>();
             foreach (var line in block.Lines)
             {
                 line.Words.RemoveAll(x => string.IsNullOrEmpty(rgxspec.Replace(x.Content.Replace("|", "I"), "").Trim()));
-                line.Words.RemoveAll(x => !IsValidWord(x.Content));                
+                line.Words.RemoveAll(x => !IsValidWord(x.Content));
+                words.AddRange(line.Words);
             }
+            double avgheight = words.Average(x => x.Height);
+            foreach (var line in block.Lines)
+            {
+                line.Words.RemoveAll(x => x.Height > avgheight * 1.5 || x.Height < avgheight * 0.5);
+            }
+
+
             block.Lines.RemoveAll(x => x.WordsInLine == 1 && x.Text.Length <= 2);
             block.Lines.RemoveAll(x => x.WordsInLine == 0);
 
@@ -90,7 +101,7 @@ namespace GameOCRTTS
                 return false;
 
 
-            if (!word.StartsWith("..") && strip.Length <= 5 && strip.Length > 1 && !onlynumbers && !strip.StartsWith("hm"))
+            if (!word.StartsWith("..") && strip.Length <= 5 && strip.Length > 1 && !onlynumbers && !strip.StartsWith("hm") && strip != "you")
             {
                 if (vowels == 0 || vowels == strip.Length)
                     return false;
