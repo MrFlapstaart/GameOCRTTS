@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 using Tesseract;
-using System.Text.RegularExpressions;
 
 namespace GameOCRTTS
 {
