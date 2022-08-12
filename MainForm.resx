@@ -119,7 +119,7 @@
   </resheader>
   <data name="ocrBox.Text" xml:space="preserve">
     <value>Open the game while this program is running in the background. 
-When a text balloon appears in the game, use the ` to read it out loud.
+When a text balloon appears in the game, use the ` key to read it out loud.
 
 By default the program assumes the text color is white,
 but you can use the "Select Text Color" button to set it to something different.</value>
