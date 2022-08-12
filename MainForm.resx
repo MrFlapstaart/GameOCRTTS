@@ -121,7 +121,7 @@
     <value>Open the game while this program is running in the background. 
 When a text balloon appears in the game, use the ` to read it out loud.
 
-By default the program asumes the text color is white,
+By default the program assumes the text color is white,
 but you can use the "Select Text Color" button to set it to something different.</value>
   </data>
   <metadata name="imageOpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
