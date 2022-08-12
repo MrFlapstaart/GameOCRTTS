@@ -11,7 +11,7 @@ namespace GameOCRTTS
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
-        private readonly string _VersionNumber = "1.1";
+        private readonly string _VersionNumber = "source";
                 
         public MainForm()
         {            
@@ -65,7 +65,7 @@ namespace GameOCRTTS
             }
             catch
             {
-                Logger.AddLog($"Error opening image file");
+                Logger.AddLog($"Error opening image file, see https://github.com/MrFlapstaart/GameOCRTTS#error-opening-image-file");
                 logBox.Text = Logger.Finish();
                 MessageBox.Show("This is not a valid image file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
