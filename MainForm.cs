@@ -13,7 +13,7 @@ namespace GameOCRTTS
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
-        private readonly string _VersionNumber = "1.2";
+        private readonly string _VersionNumber = "1.3";
         private static readonly HttpClient client = new HttpClient();
 
         public MainForm()
@@ -209,7 +209,7 @@ namespace GameOCRTTS
                 {
                     // Run installer and close program.
                     LiveUpdate.DownloadInstaller();
-                    System.Diagnostics.Process.Start("c:/GameOCRTTS_Temp/Installer.exe");
+                    System.Diagnostics.Process.Start($"{LiveUpdate.INSTALLERFILENAME}");
                     Close();
                 }
             }
