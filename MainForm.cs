@@ -15,7 +15,6 @@ namespace GameOCRTTS
         private int _FadeDistance = 15;
         private readonly string _VersionNumber = "1.2";
         private static readonly HttpClient client = new HttpClient();
-        private string _LatestVersion = "";
 
         public MainForm()
         {            
@@ -199,14 +198,8 @@ namespace GameOCRTTS
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
-            // Do web request
-            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
-            var response = (HttpWebResponse)request.GetResponse();
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            _LatestVersion = responseString;
-            // Remove enters
-            string LatestVersionCleaned = _LatestVersion.Replace("\n", "");
-            // Check version number
+            LiveUpdate.DoWebRequest();
+            string LatestVersionCleaned = LiveUpdate.LatestVersion.Replace("\n", "");
             if (_VersionNumber != LatestVersionCleaned)
             {
                 // Show interactive MessageBox
@@ -214,16 +207,8 @@ namespace GameOCRTTS
                           "Version Checker", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    // Create GameOCRTTS_Temp in C:\
-                    string dir = @"C:\GameOCRTTS_Temp\";
-                    if (!Directory.Exists(dir))
-                    {
-                        Directory.CreateDirectory(dir);
-                    }
-                    // Download installer
-                    WebClient webClient = new WebClient();
-                    webClient.DownloadFile($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe", @"C:\GameOCRTTS_Temp\Installer.exe");
                     // Run installer and close program.
+                    LiveUpdate.DownloadInstaller();
                     System.Diagnostics.Process.Start("c:/GameOCRTTS_Temp/Installer.exe");
                     Close();
                 }
