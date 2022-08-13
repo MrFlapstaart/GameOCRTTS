@@ -13,7 +13,7 @@ namespace GameOCRTTS
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
-        private readonly string _VersionNumber = "1.2";
+        private readonly string _VersionNumber = "1.1";
         private static readonly HttpClient client = new HttpClient();
         private string _LatestVersion = "";
 
@@ -30,6 +30,12 @@ namespace GameOCRTTS
             colorPanel.BackColor = _Brightest;
             distanceBar.Value = _FadeDistance;
             distanceLabel.Text = _FadeDistance.ToString();
+
+            // Remove temporary installer file.
+            if (File.Exists(@"C:\GameOCRTTS_Temp\Installer.exe"))
+            {
+                File.Delete(@"C:\GameOCRTTS_Temp\Installer.exe");
+            }
         }
 
         private void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -197,17 +203,34 @@ namespace GameOCRTTS
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
+            // Do web request
             var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             _LatestVersion = responseString;
+            // Remove enters
             string LatestVersionCleaned = _LatestVersion.Replace("\n", "");
+            // Check version number
             if (_VersionNumber != LatestVersionCleaned)
-            { 
-            DialogResult dr = MessageBox.Show("A newer version is available online. Download now?",
-                      "Version Checker", MessageBoxButtons.YesNo);
+            {
+                // Show interactive MessageBox
+                DialogResult dr = MessageBox.Show("A newer version is available online. Download now?",
+                          "Version Checker", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
-                    System.Diagnostics.Process.Start($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe");
+                {
+                    // Create GameOCRTTS_Temp in C:\
+                    string dir = @"C:\GameOCRTTS_Temp\";
+                    if (!Directory.Exists(dir))
+                    {
+                        Directory.CreateDirectory(dir);
+                    }
+                    // Download installer
+                    WebClient webClient = new WebClient();
+                    webClient.DownloadFile($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe", @"C:\GameOCRTTS_Temp\Installer.exe");
+                    // Run installer and close program.
+                    System.Diagnostics.Process.Start("c:/GameOCRTTS_Temp/Installer.exe");
+                    Close();
+                }
             }
             else
                 MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);

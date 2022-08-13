@@ -230,14 +230,14 @@ namespace GameOCRTTS
             // contextMenuGitHub
             // 
             this.contextMenuGitHub.Name = "contextMenuGitHub";
-            this.contextMenuGitHub.Size = new System.Drawing.Size(170, 22);
+            this.contextMenuGitHub.Size = new System.Drawing.Size(180, 22);
             this.contextMenuGitHub.Text = "GitHub page";
             this.contextMenuGitHub.Click += new System.EventHandler(this.contextMenuGitHub_Click);
             // 
             // contextMenuHelp
             // 
             this.contextMenuHelp.Name = "contextMenuHelp";
-            this.contextMenuHelp.Size = new System.Drawing.Size(170, 22);
+            this.contextMenuHelp.Size = new System.Drawing.Size(180, 22);
             this.contextMenuHelp.Text = "Help";
             this.contextMenuHelp.Click += new System.EventHandler(this.contextMenuHelp_Click);
             // 
@@ -250,7 +250,7 @@ namespace GameOCRTTS
             this.contextMenuIssuesDontKnow,
             this.contextMenuIssuesOther});
             this.contextMenuIssues.Name = "contextMenuIssues";
-            this.contextMenuIssues.Size = new System.Drawing.Size(170, 22);
+            this.contextMenuIssues.Size = new System.Drawing.Size(180, 22);
             this.contextMenuIssues.Text = "Problems?";
             // 
             // contextMenuIssuesDesign
@@ -297,19 +297,19 @@ namespace GameOCRTTS
             this.contextMenuVersionCheck,
             this.contextMenuAbout});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(171, 114);
+            this.contextMenu.Size = new System.Drawing.Size(181, 136);
             // 
             // contextMenuVersionCheck
             // 
             this.contextMenuVersionCheck.Name = "contextMenuVersionCheck";
-            this.contextMenuVersionCheck.Size = new System.Drawing.Size(170, 22);
-            this.contextMenuVersionCheck.Text = "Check for updates";
+            this.contextMenuVersionCheck.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuVersionCheck.Text = "Live Update";
             this.contextMenuVersionCheck.Click += new System.EventHandler(this.contextMenuVersionCheck_Click);
             // 
             // contextMenuAbout
             // 
             this.contextMenuAbout.Name = "contextMenuAbout";
-            this.contextMenuAbout.Size = new System.Drawing.Size(170, 22);
+            this.contextMenuAbout.Size = new System.Drawing.Size(180, 22);
             this.contextMenuAbout.Text = "About";
             this.contextMenuAbout.Click += new System.EventHandler(this.contextMenuAbout_Click);
             // 
