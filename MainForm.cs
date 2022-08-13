@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Windows.Forms;
 
 namespace GameOCRTTS
@@ -14,7 +12,6 @@ namespace GameOCRTTS
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
         private readonly string _VersionNumber = "1.2";
-        private static readonly HttpClient client = new HttpClient();
 
         public MainForm()
         {            
