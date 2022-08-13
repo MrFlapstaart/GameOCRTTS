@@ -26,18 +26,10 @@ namespace GameOCRTTS
                 var response = (HttpWebResponse)request.GetResponse();
                 var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
                 LatestVersion = responseString;
-                // Remove enters
-                // Check version number
             }
         internal static void DownloadInstaller()
         {
             string LatestVersionCleaned = LatestVersion.Replace("\n", "");
-            // Create GameOCRTTS_Temp in C:\
-            string dir = @$"{TEMPDIR}";
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
             // Download installer
             WebClient webClient = new WebClient();
             webClient.DownloadFile($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe", @$"{INSTALLERFILENAME}");
