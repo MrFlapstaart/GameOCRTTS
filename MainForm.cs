@@ -11,7 +11,7 @@ namespace GameOCRTTS
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
-        private readonly string _VersionNumber = "source";
+        private readonly string _VersionNumber = "1.2";
                 
         public MainForm()
         {            
