@@ -2,17 +2,22 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Windows.Forms;
 
 namespace GameOCRTTS
 {
     public partial class MainForm : Form
-    {           
+    {
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
         private readonly string _VersionNumber = "1.2";
-                
+        private static readonly HttpClient client = new HttpClient();
+        private string _LatestVersion = "";
+
+
         public MainForm()
         {            
             // Register the event that is fired after the key press.
@@ -197,7 +202,21 @@ namespace GameOCRTTS
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/MrFlapstaart/GameOCRTTS/blob/master/releases/version-checker/{_VersionNumber}.md");
+            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            _LatestVersion = responseString;
+            string LatestVersionCleaned = _LatestVersion.Replace("\n", "");
+            if (_VersionNumber != LatestVersionCleaned)
+            { 
+            DialogResult dr = MessageBox.Show("A newer version is available online. Download now?",
+                      "Version Checker", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                    System.Diagnostics.Process.Start($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe");
+            }
+            else
+                MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
