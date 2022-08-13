@@ -1,21 +1,36 @@
-﻿using System.Speech.Synthesis;
+﻿using System.Linq;
+using System.Collections.Generic;
+using System.Speech.Synthesis;
 
 namespace GameOCRTTS
 {
     internal static class TTS
     {
         private static SpeechSynthesizer _TTS = new SpeechSynthesizer();
+                
+        internal static void SpeakOut(string text)
+        {
+            SpeakOut(text, null);
+        }
 
-        public static void SpeakOut(string text)
+        internal static void SpeakOut(string text, string voicename)
         {
             _TTS.Dispose();
             if (string.IsNullOrEmpty(text))
                 return;
 
             _TTS = new SpeechSynthesizer();
-            //var voicelist = _TTS.GetInstalledVoices();
-            //_TTS.SelectVoice(voicelist[0].VoiceInfo.Name);
+            _TTS.InjectOneCoreVoices();
+            if (!string.IsNullOrEmpty(voicename))
+                _TTS.SelectVoice(voicename);
             _TTS.SpeakAsync(text);
+        }
+
+        internal static List<string> GetVoices()
+        {
+            var voicelist = _TTS.GetInstalledVoices();
+            var result = voicelist.Select(x => x.VoiceInfo.Name).ToList();
+            return result;
         }
     }
 }
