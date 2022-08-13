@@ -17,7 +17,6 @@ namespace GameOCRTTS
         private static readonly HttpClient client = new HttpClient();
         private string _LatestVersion = "";
 
-
         public MainForm()
         {            
             // Register the event that is fired after the key press.
@@ -73,9 +72,7 @@ namespace GameOCRTTS
                 Logger.AddLog($"Error opening image file, see https://github.com/MrFlapstaart/GameOCRTTS#error-opening-image-file");
                 logBox.Text = Logger.Finish();
                 MessageBox.Show("This is not a valid image file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            
+            } 
         }
 
         private void ProcessImage(Bitmap bitmap)
@@ -161,7 +158,6 @@ namespace GameOCRTTS
             _FadeDistance = distanceBar.Value;
             distanceLabel.Text = _FadeDistance.ToString();
         }
-
         // Context menu links.
         private void contextMenuHelp_Click(object sender, EventArgs e)
         {
@@ -172,7 +168,6 @@ namespace GameOCRTTS
         {
             System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS");
         }
-
         // Issue tracker links.
         private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
         {
@@ -216,7 +211,6 @@ namespace GameOCRTTS
             }
             else
                 MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
