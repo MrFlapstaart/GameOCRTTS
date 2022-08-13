@@ -74,43 +74,23 @@ namespace GameOCRTTS
         }
 
         private void ProcessImage(Bitmap bitmap)
-        {
-            Logger.AddLog("Rescaling image.");
-            Image resultimage;
-            if (bitmap.Width <= 1024)
-                resultimage = ImageProc.Rescale(bitmap, 300, 300);
-            else
-                resultimage = ImageProc.Rescale(bitmap, 100, 100);
-
-            Logger.AddLog("Stripping colors from image.");
-            resultimage = ImageProc.StripColorsFromImage(resultimage, _Brightest, _FadeDistance);
-
-            MemoryStream byteStream = new MemoryStream();
-            Logger.AddLog("Converting to .tiff.");
-            resultimage.Save(byteStream, System.Drawing.Imaging.ImageFormat.Tiff);
-            byteStream.Position = 0;
-
-            Logger.AddLog("Handle OCR.");
-            // Multiple steps make it easier to debug.
-            TextBlock block = OCR.GetTextFromTiffStream(byteStream.ToArray());
-            string text = block.Text;
-            string stripped = TextHelper.StripSpecialCharacters(text);
-            ocrBox.Text = TextHelper.RemoveGarbageText(stripped);            
-            using (Graphics g = Graphics.FromImage(resultimage))
-            {
-                var pen = new Pen(Color.Red);
-                foreach (var line in block.Lines)
-                {
-                    g.DrawRectangle(pen, new Rectangle(line.HPos, line.VPos, line.Width, line.Height));
-                }
-            }
-
+        {                  
+            OCRResult result = OCR.HandleOCR(bitmap, _Brightest, _FadeDistance);
+            Image resultimage = result.ProcessedImage;
+            ocrBox.Text = result.ResultText;
+                        
             if (processedImage.Image != null)
                 processedImage.Image.Dispose();
-            processedImage.Image = new Bitmap(resultimage).Clone(
-                new Rectangle(block.HPos, block.VPos, 
-                block.Width, block.Height),
-                PixelFormat.DontCare);
+            try
+            {
+                processedImage.Image = new Bitmap(resultimage).Clone(
+                    new Rectangle(result.Block.HPos, result.Block.VPos,
+                    result.Block.Width == 1 ? resultimage.Width : result.Block.Width,
+                    result.Block.Height == 1 ? resultimage.Height : result.Block.Height),
+                    PixelFormat.DontCare);
+            }
+            catch
+            { }
 
             if (rawImage.Image != null)
                 rawImage.Image.Dispose();

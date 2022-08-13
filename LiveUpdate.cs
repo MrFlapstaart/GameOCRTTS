@@ -19,14 +19,16 @@ namespace GameOCRTTS
                 File.Delete(INSTALLERFILENAME);
             }
         }
+
         internal static void DoWebRequest()
-            {
-                // Do web request
-                var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
-                var response = (HttpWebResponse)request.GetResponse();
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                LatestVersion = responseString;
-            }
+        {
+            // Do web request
+            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            LatestVersion = responseString;
+        }
+
         internal static void DownloadInstaller()
         {
             string LatestVersionCleaned = LatestVersion.Replace("\n", "");

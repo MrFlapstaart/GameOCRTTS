@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System;
 
 namespace GameOCRTTS
 {
@@ -47,9 +48,9 @@ namespace GameOCRTTS
                 if (strip.Length == 1 && !onlynumbers && strip != "i" && strip != "a")
                     continue;
 
-                if (!word.StartsWith("..") && strip.Length <= 5 && !onlynumbers && strip.Split(new char[] { 'e', 'a', 'u', 'o', 'i', 'y' }).Length == 1 && !strip.StartsWith("hm"))
+                if (!IsValidWord(word))
                     continue;
-
+                                
                 result.Append(word + " ");
             }
 
@@ -62,15 +63,16 @@ namespace GameOCRTTS
             List<TextString> words = new List<TextString>();
             foreach (var line in block.Lines)
             {
-                line.Words.RemoveAll(x => string.IsNullOrEmpty(rgxspec.Replace(x.Content.Replace("|", "I"), "").Trim()));
+                line.Words.RemoveAll(x => string.IsNullOrEmpty(rgxspec.Replace(x.Content, "").Trim()));
                 line.Words.RemoveAll(x => !IsValidWord(x.Content));
                 words.AddRange(line.Words);
             }
-            double avgheight = words.Average(x => x.Height);
-            foreach (var line in block.Lines)
-            {
-                line.Words.RemoveAll(x => x.Height > avgheight * 1.5 || x.Height < avgheight * 0.5);
-            }
+            
+            //double avgheight = words.Average(x => x.Height);
+            //foreach (var line in block.Lines)
+            //{
+            //    line.Words.RemoveAll(x => x.Height > avgheight * 1.5 || x.Height < avgheight * 0.5);
+            //}
 
 
             block.Lines.RemoveAll(x => x.WordsInLine == 1 && x.Text.Length <= 2);
@@ -81,32 +83,73 @@ namespace GameOCRTTS
 
         private static bool IsValidWord(string word)
         {
+            if (string.IsNullOrEmpty(word))
+                return false;
+
             Regex rgx = new Regex("[^a-zA-Z0-9']");
+            Regex rgxcap = new Regex("[^A-Z0-9']");
             Regex rgxnum = new Regex("[^0-9]");
             Regex rgxvowel = new Regex("[^aeiouy]");
 
             string strip = rgx.Replace(word, "")?.ToLower()?.Trim();
+            string stripcap = rgxcap.Replace(word, "")?.Trim();
+
+            if (word.StartsWith(".."))
+                return true;
+
             if (string.IsNullOrEmpty(strip))
                 return false;
-
+                        
             if (strip.Length == 1 && strip != "i" && strip != "a")
+                return false;
+
+            if (strip.Length == 1 && word.Length >= 3)
                 return false;
                        
             string numbers = rgxnum.Replace(word, "");
             bool onlynumbers = numbers.Length == strip.Length && numbers.Length > 0;            
             int vowels = rgxvowel.Replace(strip, "").Length;
 
-            if (strip.Length == 1 && !onlynumbers && strip != "i" && strip != "a")
+            if (numbers.Length > 0 && !onlynumbers)
                 return false;
 
+            // Word with multiple capitals mixed with non-capitals, porbably not a valid word.
+            if (stripcap.Length > 1 && stripcap.Length < strip.Length)
+                return false;
 
-            if (!word.StartsWith("..") && strip.Length <= 5 && strip.Length > 1 && !onlynumbers && !strip.StartsWith("hm") && strip != "you")
+            if (strip.Length == 1 && !onlynumbers && !ValidVowelWord(strip))
+                return false;
+
+            if (!word.StartsWith("..") && strip.Length <= 5 && strip.Length > 1 && !onlynumbers && !ValidConsonantWord(strip) && !ValidVowelWord(strip))
             {
                 if (vowels == 0 || vowels == strip.Length)
                     return false;
             }
 
             return true;
+        }
+
+        private static bool ValidVowelWord(string word)
+        {
+            string text = word?.ToLower();
+            bool result = 
+                text == "you" ||
+                text == "eye" ||
+                text == "i" ||
+                text == "yay" ||
+                text == "a";
+
+            return result;
+        }
+
+        private static bool ValidConsonantWord(string word)
+        {
+            string text = word?.ToLower() ?? "";
+            bool result =
+                text.StartsWith("hm") ||
+                text.StartsWith("zz");
+                
+            return result;
         }
 
         internal static string StripSpecialCharacters(string text)

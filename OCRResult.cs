@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -34,9 +35,17 @@ namespace GameOCRTTS
 		public string Content
 		{
 			get { return _content; }
-			set { _content = value?.Replace("|", "I")?.Replace("[","I"); }
+			set { _content = value?
+					.Replace("|", "I")?
+					.Replace("[","I")?
+					.Replace("]", "I"); }
 		}
-	}
+
+        public override string ToString()
+        {
+			return Content;
+        }
+    }
 
 	[XmlRoot(ElementName = "TextLine")]
 	public class TextLine : OCRDimBase
@@ -91,7 +100,7 @@ namespace GameOCRTTS
 		{
 			get
 			{
-				var result = string.Join(" ", Lines.Select(x => x.Text).ToList());
+				var result = string.Join(" ", Lines.OrderBy(x => x.Id).Select(x => x.Text).ToList());
 				return result + _Text;
 			}
 			set { _Text = value; }
@@ -116,7 +125,12 @@ namespace GameOCRTTS
 			get { return Blocks.Sum(x => x.WordsInBlock); }
 			set { }
         }
-	}
+
+        public override string ToString()
+        {
+			return string.Join(" ", Blocks.Select(x => x.Text).ToList());
+        }
+    }
 
 	[XmlRoot(ElementName = "SP")]
 	public class SP : OCRDimBase
@@ -131,7 +145,7 @@ namespace GameOCRTTS
 	}
 
 	[XmlRoot(ElementName = "Page")]
-	public class OCRResult
+	public class TesseractResult
 	{
 		[XmlElement(ElementName = "PrintSpace")]
 		public PrintSpace PrintSpace { get; set; } = new PrintSpace();
@@ -151,4 +165,11 @@ namespace GameOCRTTS
 		[XmlIgnore]
 		public string Result { get; set; }
 	}
+
+	public class OCRResult
+    {
+		public TextBlock Block { get; set; }
+		public Image  ProcessedImage { get; set; }
+		public string ResultText { get; set; }
+    }
 }
