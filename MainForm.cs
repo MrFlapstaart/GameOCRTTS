@@ -31,11 +31,7 @@ namespace GameOCRTTS
             distanceBar.Value = _FadeDistance;
             distanceLabel.Text = _FadeDistance.ToString();
 
-            // Remove temporary installer file.
-            if (File.Exists(@"C:\GameOCRTTS_Temp\Installer.exe"))
-            {
-                File.Delete(@"C:\GameOCRTTS_Temp\Installer.exe");
-            }
+            LiveUpdate.CleanUpTemp();
         }
 
         private void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -238,7 +234,7 @@ namespace GameOCRTTS
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"GameOCRTTS version {_VersionNumber} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"{LiveUpdate.PRODUCT} version {_VersionNumber} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // End of context menu links.
     }
