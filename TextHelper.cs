@@ -45,7 +45,7 @@ namespace GameOCRTTS
                     continue;
 
                 // 'I' is probably never the last word in a sentence.
-                if (strip == "i" && word.Length == 1 && wordidx == wordcount)
+                if ((strip == "i" || strip == "a") && word.Length == 1 && wordidx == wordcount)
                     continue;
 
                 if (strip.Length == 1 && !onlynumbers && strip != "i" && strip != "a")
