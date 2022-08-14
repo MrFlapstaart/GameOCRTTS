@@ -50,6 +50,7 @@ namespace GameOCRTTS
 
         public void DownloadInstaller()
         {
+            Directory.CreateDirectory(TempDir);
             string LatestVersionCleaned = LatestVersion.Replace("\n", "");
             // Download installer
             WebClient webClient = new WebClient();
