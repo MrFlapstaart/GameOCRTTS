@@ -60,9 +60,9 @@ namespace GameOCRTTS
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuVersionCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.selectColorLabel = new System.Windows.Forms.Label();
+            this.settingsLabel = new System.Windows.Forms.Label();
+            this.voiceComboLabel = new System.Windows.Forms.Label();
             this.voiceCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
@@ -317,32 +317,32 @@ namespace GameOCRTTS
             this.contextMenuAbout.Text = "About";
             this.contextMenuAbout.Click += new System.EventHandler(this.contextMenuAbout_Click);
             // 
-            // label1
+            // selectColorLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(737, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Text Balloon Font Color";
+            this.selectColorLabel.AutoSize = true;
+            this.selectColorLabel.Location = new System.Drawing.Point(737, 69);
+            this.selectColorLabel.Name = "selectColorLabel";
+            this.selectColorLabel.Size = new System.Drawing.Size(117, 13);
+            this.selectColorLabel.TabIndex = 17;
+            this.selectColorLabel.Text = "Text Balloon Font Color";
             // 
-            // label2
+            // settingsLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(737, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Settings";
+            this.settingsLabel.AutoSize = true;
+            this.settingsLabel.Location = new System.Drawing.Point(737, 38);
+            this.settingsLabel.Name = "settingsLabel";
+            this.settingsLabel.Size = new System.Drawing.Size(45, 13);
+            this.settingsLabel.TabIndex = 18;
+            this.settingsLabel.Text = "Settings";
             // 
-            // label3
+            // voiceComboLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(737, 185);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Voice:";
+            this.voiceComboLabel.AutoSize = true;
+            this.voiceComboLabel.Location = new System.Drawing.Point(737, 185);
+            this.voiceComboLabel.Name = "voiceComboLabel";
+            this.voiceComboLabel.Size = new System.Drawing.Size(37, 13);
+            this.voiceComboLabel.TabIndex = 19;
+            this.voiceComboLabel.Text = "Voice:";
             // 
             // voiceCombo
             // 
@@ -359,9 +359,9 @@ namespace GameOCRTTS
             this.ClientSize = new System.Drawing.Size(905, 334);
             this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.voiceCombo);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.voiceComboLabel);
+            this.Controls.Add(this.settingsLabel);
+            this.Controls.Add(this.selectColorLabel);
             this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.colorPanel);
@@ -423,9 +423,9 @@ namespace GameOCRTTS
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem contextMenuVersionCheck;
         private System.Windows.Forms.ToolStripMenuItem contextMenuAbout;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label selectColorLabel;
+        private System.Windows.Forms.Label settingsLabel;
+        private System.Windows.Forms.Label voiceComboLabel;
         private System.Windows.Forms.ComboBox voiceCombo;
     }
 }
