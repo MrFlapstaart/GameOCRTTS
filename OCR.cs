@@ -12,12 +12,12 @@ namespace GameOCRTTS
     {
         private static TesseractEngine _Engine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default);
 
-        internal static OCRResult HandleOCR(Bitmap bitmap, Color brightest, int fadedistance)
+        internal static OCRResult HandleOCR(Bitmap bitmap, Color brightest, int fadedistance, bool forcefullscale)
         {
             Logger.AddLog("Rescaling image.");
             Image resultimage;
             bool fullscale = false;
-            if (bitmap.Width <= 1024)
+            if (bitmap.Width <= 1024 || forcefullscale)
             {
                 resultimage = ImageProc.Rescale(bitmap, 300, 300);
                 fullscale = true;

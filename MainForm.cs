@@ -21,12 +21,16 @@ namespace GameOCRTTS
             // Register hotkey for OCR/TTS. Oem3 = `
             _Hook.RegisterHotKey(SpecialKeys.None, Keys.Oem3);
             _Hook.RegisterHotKey(SpecialKeys.Control, Keys.Oem3);
+            _Hook.RegisterHotKey(SpecialKeys.Shift, Keys.Oem3);
 
             InitializeComponent();
 
             colorPanel.BackColor = _Brightest;
             distanceBar.Value = _FadeDistance;
             distanceLabel.Text = _FadeDistance.ToString();
+
+            voiceCombo.Items.AddRange(TTS.GetVoices().ToArray());
+            voiceCombo.SelectedIndex = 0;
 
             _LiveUpdater.CleanUpTemp();
             Text = $"{_LiveUpdater.Product} v{_LiveUpdater.CurrentVersion}";
@@ -50,7 +54,7 @@ namespace GameOCRTTS
                 Logger.AddLog("Capture screenshot.");
                 Bitmap bitmap = ImageProc.CaptureScreenshot(bounds);
 
-                ProcessImage(bitmap);
+                ProcessImage(bitmap, e.Modifier == SpecialKeys.Shift);
             }
         }
                 
@@ -65,7 +69,7 @@ namespace GameOCRTTS
             {
                 Image testimage = Bitmap.FromFile(imageOpenDialog.FileName);
                 Bitmap bitmap = new Bitmap(testimage);
-                ProcessImage(bitmap);
+                ProcessImage(bitmap, false);
             }
             catch
             {
@@ -75,9 +79,9 @@ namespace GameOCRTTS
             } 
         }
 
-        private void ProcessImage(Bitmap bitmap)
+        private void ProcessImage(Bitmap bitmap, bool forcefullscale)
         {                  
-            OCRResult result = OCR.HandleOCR(bitmap, _Brightest, _FadeDistance);
+            OCRResult result = OCR.HandleOCR(bitmap, _Brightest, _FadeDistance, forcefullscale);
             Image resultimage = result.ProcessedImage;
             ocrBox.Text = result.ResultText;
                         
@@ -90,6 +94,8 @@ namespace GameOCRTTS
                     result.Block.Width == 1 ? resultimage.Width : result.Block.Width,
                     result.Block.Height == 1 ? resultimage.Height : result.Block.Height),
                     PixelFormat.DontCare);
+
+                processedImageLabel.Text = $"Processed Image ({processedImage.Image.Width} x {processedImage.Image.Height})";
             }
             catch
             { }
@@ -99,9 +105,10 @@ namespace GameOCRTTS
             rawImage.Image = bitmap.Clone(
                 new Rectangle(0, 0, bitmap.Width, bitmap.Height),
                 PixelFormat.DontCare);
+            rawImageLabel.Text = $"Processed Image ({rawImage.Image.Width} x {rawImage.Image.Height})";
 
             Logger.AddLog("Reading out.");
-            TTS.SpeakOut(ocrBox.Text?.Replace("\n", " "));
+            TTS.SpeakOut(ocrBox.Text?.Replace("\n", " "), voiceCombo.Text);
             if ((ocrBox.Text?.Trim()?.Length ?? 0) < 5)
                 SFXPlayer.PlayError();
 
@@ -114,7 +121,7 @@ namespace GameOCRTTS
                                                        
         private void speakButton_Click(object sender, EventArgs e)
         {
-            TTS.SpeakOut(ocrBox.Text);
+            TTS.SpeakOut(ocrBox.Text, voiceCombo.Text);
         }
                               
         private void garbageButton_Click(object sender, EventArgs e)
@@ -173,13 +180,16 @@ namespace GameOCRTTS
         {
             Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new");
         }
+
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {            
             if (_LiveUpdater.NewerVersionAvailable())
             {
                 // Show interactive MessageBox
-                DialogResult dr = MessageBox.Show("A newer version is available online. Download now?",
+                DialogResult dr = MessageBox.Show($"A newer version is available online. Download now?\n\n" +
+                    $"Current version: {_LiveUpdater.CurrentVersion}\n" +
+                    $"Latest version: {_LiveUpdater.LatestVersion}",
                           "Version Checker", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {

@@ -60,6 +60,10 @@ namespace GameOCRTTS
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuVersionCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.voiceCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).BeginInit();
@@ -183,10 +187,10 @@ namespace GameOCRTTS
             // 
             // distanceBar
             // 
-            this.distanceBar.Location = new System.Drawing.Point(558, 12);
+            this.distanceBar.Location = new System.Drawing.Point(740, 137);
             this.distanceBar.Maximum = 100;
             this.distanceBar.Name = "distanceBar";
-            this.distanceBar.Size = new System.Drawing.Size(142, 45);
+            this.distanceBar.Size = new System.Drawing.Size(139, 45);
             this.distanceBar.TabIndex = 12;
             this.distanceBar.Value = 15;
             this.distanceBar.Scroll += new System.EventHandler(this.distanceBar_Scroll);
@@ -194,16 +198,16 @@ namespace GameOCRTTS
             // distanceBarLabel
             // 
             this.distanceBarLabel.AutoSize = true;
-            this.distanceBarLabel.Location = new System.Drawing.Point(475, 17);
+            this.distanceBarLabel.Location = new System.Drawing.Point(737, 121);
             this.distanceBarLabel.Name = "distanceBarLabel";
-            this.distanceBarLabel.Size = new System.Drawing.Size(77, 13);
+            this.distanceBarLabel.Size = new System.Drawing.Size(124, 13);
             this.distanceBarLabel.TabIndex = 13;
-            this.distanceBarLabel.Text = "Fade distance:";
+            this.distanceBarLabel.Text = "Text color fade distance:";
             // 
             // colorPanel
             // 
             this.colorPanel.BackColor = System.Drawing.Color.White;
-            this.colorPanel.Location = new System.Drawing.Point(439, 12);
+            this.colorPanel.Location = new System.Drawing.Point(875, 85);
             this.colorPanel.Name = "colorPanel";
             this.colorPanel.Size = new System.Drawing.Size(23, 23);
             this.colorPanel.TabIndex = 14;
@@ -211,7 +215,7 @@ namespace GameOCRTTS
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
-            this.distanceLabel.Location = new System.Drawing.Point(706, 17);
+            this.distanceLabel.Location = new System.Drawing.Point(885, 142);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Size = new System.Drawing.Size(13, 13);
             this.distanceLabel.TabIndex = 15;
@@ -219,7 +223,7 @@ namespace GameOCRTTS
             // 
             // selectColorButton
             // 
-            this.selectColorButton.Location = new System.Drawing.Point(306, 12);
+            this.selectColorButton.Location = new System.Drawing.Point(740, 85);
             this.selectColorButton.Name = "selectColorButton";
             this.selectColorButton.Size = new System.Drawing.Size(127, 23);
             this.selectColorButton.TabIndex = 16;
@@ -230,14 +234,14 @@ namespace GameOCRTTS
             // contextMenuGitHub
             // 
             this.contextMenuGitHub.Name = "contextMenuGitHub";
-            this.contextMenuGitHub.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuGitHub.Size = new System.Drawing.Size(141, 22);
             this.contextMenuGitHub.Text = "GitHub page";
             this.contextMenuGitHub.Click += new System.EventHandler(this.contextMenuGitHub_Click);
             // 
             // contextMenuHelp
             // 
             this.contextMenuHelp.Name = "contextMenuHelp";
-            this.contextMenuHelp.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuHelp.Size = new System.Drawing.Size(141, 22);
             this.contextMenuHelp.Text = "Help";
             this.contextMenuHelp.Click += new System.EventHandler(this.contextMenuHelp_Click);
             // 
@@ -250,7 +254,7 @@ namespace GameOCRTTS
             this.contextMenuIssuesDontKnow,
             this.contextMenuIssuesOther});
             this.contextMenuIssues.Name = "contextMenuIssues";
-            this.contextMenuIssues.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssues.Size = new System.Drawing.Size(141, 22);
             this.contextMenuIssues.Text = "Problems?";
             // 
             // contextMenuIssuesDesign
@@ -297,28 +301,67 @@ namespace GameOCRTTS
             this.contextMenuVersionCheck,
             this.contextMenuAbout});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(181, 136);
+            this.contextMenu.Size = new System.Drawing.Size(142, 114);
             // 
             // contextMenuVersionCheck
             // 
             this.contextMenuVersionCheck.Name = "contextMenuVersionCheck";
-            this.contextMenuVersionCheck.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuVersionCheck.Size = new System.Drawing.Size(141, 22);
             this.contextMenuVersionCheck.Text = "Live Update";
             this.contextMenuVersionCheck.Click += new System.EventHandler(this.contextMenuVersionCheck_Click);
             // 
             // contextMenuAbout
             // 
             this.contextMenuAbout.Name = "contextMenuAbout";
-            this.contextMenuAbout.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuAbout.Size = new System.Drawing.Size(141, 22);
             this.contextMenuAbout.Text = "About";
             this.contextMenuAbout.Click += new System.EventHandler(this.contextMenuAbout_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(737, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Text Balloon Font Color";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(737, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Settings";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(737, 185);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Voice:";
+            // 
+            // voiceCombo
+            // 
+            this.voiceCombo.FormattingEnabled = true;
+            this.voiceCombo.Location = new System.Drawing.Point(740, 202);
+            this.voiceCombo.Name = "voiceCombo";
+            this.voiceCombo.Size = new System.Drawing.Size(139, 21);
+            this.voiceCombo.TabIndex = 20;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 334);
+            this.ClientSize = new System.Drawing.Size(905, 334);
             this.ContextMenuStrip = this.contextMenu;
+            this.Controls.Add(this.voiceCombo);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.selectColorButton);
             this.Controls.Add(this.distanceLabel);
             this.Controls.Add(this.colorPanel);
@@ -380,6 +423,10 @@ namespace GameOCRTTS
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem contextMenuVersionCheck;
         private System.Windows.Forms.ToolStripMenuItem contextMenuAbout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox voiceCombo;
     }
 }
 

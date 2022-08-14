@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -42,17 +43,31 @@ namespace GameOCRTTS
                 // Unlikely text block starts or ends with a number
                 if (onlynumbers && (wordidx == 1 || wordidx == wordcount ))
                     continue;
-                                
+
+                // 'I' is probably never the last word in a sentence.
+                if (strip == "i" && word.Length == 1 && wordidx == wordcount)
+                    continue;
+
                 if (strip.Length == 1 && !onlynumbers && strip != "i" && strip != "a")
                     continue;
 
                 if (!IsValidWord(word))
                     continue;
                                 
-                result.Append(word + " ");
+                result.Append(FixBrokenWord(word) + " ");
             }
 
             return result.ToString();
+        }
+
+        private static string FixBrokenWord(string word)
+        {
+            if (word == "Il")
+                return "I'll";
+            else if (word.ToLower().StartsWith("c'mon"))
+                return word.ToLower().Replace("c'mon", "come on");
+            else
+                return word;
         }
 
         internal static TextBlock ProcessTextBlock(TextBlock block)
@@ -85,7 +100,7 @@ namespace GameOCRTTS
                 return false;
 
             Regex rgx = new Regex("[^a-zA-Z0-9']");
-            Regex rgxcap = new Regex("[^A-Z0-9']");
+            Regex rgxcap = new Regex("[^A-Z0-9]");
             Regex rgxnum = new Regex("[^0-9]");
             Regex rgxvowel = new Regex("[^aeiouy]");
 

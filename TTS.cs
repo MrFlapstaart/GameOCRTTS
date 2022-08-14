@@ -28,6 +28,7 @@ namespace GameOCRTTS
 
         internal static List<string> GetVoices()
         {
+            _TTS.InjectOneCoreVoices();
             var voicelist = _TTS.GetInstalledVoices();
             var result = voicelist.Select(x => x.VoiceInfo.Name).ToList();
             return result;
