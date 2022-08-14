@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -10,9 +11,9 @@ namespace GameOCRTTS
     {
         private KeyboardHook _Hook = new KeyboardHook();
         private Color _Brightest = Color.White;
-        private int _FadeDistance = 15;
-        private readonly string _VersionNumber = "1.2";
-        internal static readonly string Repository = "MrFlapstaart/GameOCRTTS";
+        private int _FadeDistance = 15;        
+        private static readonly string GithubUsername = "MrFlapstaart";
+        private LiveUpdate _LiveUpdater = new LiveUpdate(GithubUsername);
 
         public MainForm()
         {            
@@ -28,7 +29,8 @@ namespace GameOCRTTS
             distanceBar.Value = _FadeDistance;
             distanceLabel.Text = _FadeDistance.ToString();
 
-            LiveUpdate.CleanUpTemp();
+            _LiveUpdater.CleanUpTemp();
+            Text = $"{_LiveUpdater.Product} v{_LiveUpdater.CurrentVersion}";
         }
 
         private void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -140,45 +142,42 @@ namespace GameOCRTTS
         // Context menu links.
         private void contextMenuHelp_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/blob/master/README.md");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/blob/master/README.md");
         }
 
         private void contextMenuGitHub_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}");
         }
         // Issue tracker links.
         private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
         }
 
         private void contextMenuIssuesOCR_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
-
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
         }
 
         private void contextMenuIssuesTTS_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=tts&template=tts.md&title=");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new?assignees=MrFlapstaart&labels=tts&template=tts.md&title=");
         }
 
         private void contextMenuIssuesDontKnow_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new");
         }
 
         private void contextMenuIssuesOther_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new");
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new");
         }
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
-        {
-            LiveUpdate.DoWebRequest();
-            string LatestVersionCleaned = LiveUpdate.LatestVersion.Replace("\n", "");
-            if (_VersionNumber != LatestVersionCleaned)
+        {            
+            if (_LiveUpdater.NewerVersionAvailable())
             {
                 // Show interactive MessageBox
                 DialogResult dr = MessageBox.Show("A newer version is available online. Download now?",
@@ -186,8 +185,8 @@ namespace GameOCRTTS
                 if (dr == DialogResult.Yes)
                 {
                     // Run installer and close program.
-                    LiveUpdate.DownloadInstaller();
-                    System.Diagnostics.Process.Start($"{LiveUpdate.INSTALLERFILENAME}");
+                    _LiveUpdater.DownloadInstaller();
+                    Process.Start($"{_LiveUpdater.InstallerFileName}");
                     Close();
                 }
             }
@@ -197,7 +196,7 @@ namespace GameOCRTTS
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"{LiveUpdate.PRODUCT} version {_VersionNumber} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"{_LiveUpdater.Product} version {_LiveUpdater.CurrentVersion} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // End of context menu links.
     }
