@@ -10,7 +10,6 @@ namespace GameOCRTTS
         private static readonly string TEMPDIR = Path.GetTempPath() + PRODUCT + "\\";
         internal static readonly string INSTALLERFILENAME = $"{TEMPDIR}Installer.exe";
         internal static string LatestVersion = "";
-
         internal static void CleanUpTemp()
         {
             // Remove temporary installer file.            
@@ -23,7 +22,7 @@ namespace GameOCRTTS
         internal static void DoWebRequest()
         {
             // Do web request
-            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/MrFlapstaart/GameOCRTTS/master/releases/LatestVersionNumber");
+            var request = (HttpWebRequest)WebRequest.Create($"https://raw.githubusercontent.com/{MainForm.Repository}/master/releases/LatestVersionNumber");
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             LatestVersion = responseString;
@@ -34,7 +33,7 @@ namespace GameOCRTTS
             string LatestVersionCleaned = LatestVersion.Replace("\n", "");
             // Download installer
             WebClient webClient = new WebClient();
-            webClient.DownloadFile($"https://github.com/MrFlapstaart/GameOCRTTS/releases/download/{LatestVersionCleaned}/Installer.exe", @$"{INSTALLERFILENAME}");
+            webClient.DownloadFile($"https://github.com/{MainForm.Repository}/releases/download/{LatestVersionCleaned}/Installer.exe", @$"{INSTALLERFILENAME}");
         }
         
     }

@@ -12,6 +12,7 @@ namespace GameOCRTTS
         private Color _Brightest = Color.White;
         private int _FadeDistance = 15;
         private readonly string _VersionNumber = "1.2";
+        internal static readonly string Repository = "MrFlapstaart/GameOCRTTS";
 
         public MainForm()
         {            
@@ -139,38 +140,38 @@ namespace GameOCRTTS
         // Context menu links.
         private void contextMenuHelp_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/blob/master/README.md");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/blob/master/README.md");
         }
 
         private void contextMenuGitHub_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}");
         }
         // Issue tracker links.
         private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
         }
 
         private void contextMenuIssuesOCR_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
 
         }
 
         private void contextMenuIssuesTTS_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new?assignees=MrFlapstaart&labels=tts&template=tts.md&title=");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new?assignees=MrFlapstaart&labels=tts&template=tts.md&title=");
         }
 
         private void contextMenuIssuesDontKnow_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new");
         }
 
         private void contextMenuIssuesOther_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/MrFlapstaart/GameOCRTTS/issues/new");
+            System.Diagnostics.Process.Start($"https://github.com/{Repository}/issues/new");
         }
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
