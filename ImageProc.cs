@@ -19,6 +19,23 @@ namespace GameOCRTTS
 
             return bitmap;            
         }
+
+        internal static Bitmap CropImage(Image original, Rectangle bounds)
+        {
+            Bitmap bitmap = new Bitmap(bounds.Width + 200, bounds.Height + 200);
+
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {                      
+                g.DrawImage(original, 
+                    10, 10,  
+                    new Rectangle(bounds.Left, bounds.Top, bounds.Width, bounds.Height),
+                    GraphicsUnit.Pixel
+                    );
+            }
+
+            return bitmap;
+        }
+
         internal static Color GetColorFromCurrentPixel()
         {            
             Bitmap bitmap = new Bitmap(10, 10);

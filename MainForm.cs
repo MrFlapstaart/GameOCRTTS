@@ -8,11 +8,10 @@ namespace GameOCRTTS
 {
     public partial class MainForm : Form
     {
-        private KeyboardHook _Hook = new KeyboardHook();
-        private Color _Brightest = Color.White;
-        private int _FadeDistance = 15;        
+        private KeyboardHook _Hook = new KeyboardHook();        
         private static readonly string GithubUsername = "MrFlapstaart";
         private LiveUpdate _LiveUpdater = new LiveUpdate(GithubUsername);
+        private OCR _OCR = new OCR();
 
         public MainForm()
         {            
@@ -25,9 +24,12 @@ namespace GameOCRTTS
 
             InitializeComponent();
 
-            colorPanel.BackColor = _Brightest;
-            distanceBar.Value = _FadeDistance;
-            distanceLabel.Text = _FadeDistance.ToString();
+            colorPanel.BackColor = _OCR.Brightest;
+            distanceBar.Value = _OCR.FadeDistance;
+            distanceLabel.Text = _OCR.FadeDistance.ToString();
+
+            defaultdpiBar.Value = _OCR.DefaultScaleDPI;
+            defaultdpiLabel.Text = _OCR.DefaultScaleDPI.ToString();
 
             voiceCombo.Items.AddRange(TTS.GetVoices().ToArray());
             voiceCombo.SelectedIndex = 0;
@@ -41,7 +43,7 @@ namespace GameOCRTTS
             if (e.Modifier == SpecialKeys.Control)
             {
                 Color color = ImageProc.GetColorFromCurrentPixel();
-                _Brightest = color;
+                _OCR.Brightest = color;
                 colorPanel.BackColor = color;
                 SFXPlayer.PlayOK();
                 return;
@@ -81,9 +83,10 @@ namespace GameOCRTTS
 
         private void ProcessImage(Bitmap bitmap, bool forcefullscale)
         {                  
-            OCRResult result = OCR.HandleOCR(bitmap, _Brightest, _FadeDistance, forcefullscale);
-            Image resultimage = result.ProcessedImage;
+            OCRResult result = _OCR.HandleOCR(bitmap, forcefullscale);
+            Image resultimage = result.ProcessedImage;            
             ocrBox.Text = result.ResultText;
+            Logger.AddLog("Original text: " + result.OriginalText);
                         
             if (processedImage.Image != null)
                 processedImage.Image.Dispose();
@@ -132,19 +135,20 @@ namespace GameOCRTTS
 
         private void selectColorButton_Click(object sender, EventArgs e)
         {
-            colorSelect.Color = _Brightest;
+            colorSelect.Color = _OCR.Brightest;
             if (colorSelect.ShowDialog() != DialogResult.OK)
                 return;
 
-            _Brightest = colorSelect.Color;
-            colorPanel.BackColor = _Brightest;
+            _OCR.Brightest = colorSelect.Color;
+            colorPanel.BackColor = _OCR.Brightest;
         }
 
         private void distanceBar_Scroll(object sender, EventArgs e)
         {
-            _FadeDistance = distanceBar.Value;
-            distanceLabel.Text = _FadeDistance.ToString();
+            _OCR.FadeDistance = distanceBar.Value;
+            distanceLabel.Text = _OCR.FadeDistance.ToString();
         }
+
         // Context menu links.
         private void contextMenuHelp_Click(object sender, EventArgs e)
         {
@@ -206,6 +210,12 @@ namespace GameOCRTTS
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"{_LiveUpdater.Product} version {_LiveUpdater.CurrentVersion} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void defaultdpiBar_Scroll(object sender, EventArgs e)
+        {
+            _OCR.DefaultScaleDPI = defaultdpiBar.Value;
+            defaultdpiLabel.Text = defaultdpiBar.Value.ToString();
         }
         // End of context menu links.
     }

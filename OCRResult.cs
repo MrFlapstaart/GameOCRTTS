@@ -94,6 +94,9 @@ namespace GameOCRTTS
 			set { }
         }
 
+		[XmlIgnore]
+		public string OriginalText { get; set; }
+
 		private string _Text;
 		[XmlIgnore]
 		public string Text
@@ -105,7 +108,7 @@ namespace GameOCRTTS
 			}
 			set { _Text = value; }
 		}
-
+		
         public override string ToString()
         {
 			return $"{HPos},{VPos},{Width},{Height} : {Text}";
@@ -164,12 +167,16 @@ namespace GameOCRTTS
 
 		[XmlIgnore]
 		public string Result { get; set; }
+
+		[XmlIgnore]
+		public string OriginalText { get; set; }
 	}
 
 	public class OCRResult
     {
 		public TextBlock Block { get; set; }
 		public Image  ProcessedImage { get; set; }
+		public string OriginalText { get; set; }
 		public string ResultText { get; set; }
     }
 }

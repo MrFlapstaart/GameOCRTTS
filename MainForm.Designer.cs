@@ -64,10 +64,14 @@ namespace GameOCRTTS
             this.settingsLabel = new System.Windows.Forms.Label();
             this.voiceComboLabel = new System.Windows.Forms.Label();
             this.voiceCombo = new System.Windows.Forms.ComboBox();
+            this.defaultdpiLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.defaultdpiBar = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).BeginInit();
             this.contextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.defaultdpiBar)).BeginInit();
             this.SuspendLayout();
             // 
             // ocrButton
@@ -188,7 +192,7 @@ namespace GameOCRTTS
             // distanceBar
             // 
             this.distanceBar.Location = new System.Drawing.Point(740, 137);
-            this.distanceBar.Maximum = 100;
+            this.distanceBar.Maximum = 255;
             this.distanceBar.Name = "distanceBar";
             this.distanceBar.Size = new System.Drawing.Size(139, 45);
             this.distanceBar.TabIndex = 12;
@@ -215,7 +219,7 @@ namespace GameOCRTTS
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
-            this.distanceLabel.Location = new System.Drawing.Point(885, 142);
+            this.distanceLabel.Location = new System.Drawing.Point(877, 142);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Size = new System.Drawing.Size(13, 13);
             this.distanceLabel.TabIndex = 15;
@@ -338,7 +342,7 @@ namespace GameOCRTTS
             // voiceComboLabel
             // 
             this.voiceComboLabel.AutoSize = true;
-            this.voiceComboLabel.Location = new System.Drawing.Point(737, 185);
+            this.voiceComboLabel.Location = new System.Drawing.Point(737, 230);
             this.voiceComboLabel.Name = "voiceComboLabel";
             this.voiceComboLabel.Size = new System.Drawing.Size(37, 13);
             this.voiceComboLabel.TabIndex = 19;
@@ -347,10 +351,39 @@ namespace GameOCRTTS
             // voiceCombo
             // 
             this.voiceCombo.FormattingEnabled = true;
-            this.voiceCombo.Location = new System.Drawing.Point(740, 202);
+            this.voiceCombo.Location = new System.Drawing.Point(740, 247);
             this.voiceCombo.Name = "voiceCombo";
             this.voiceCombo.Size = new System.Drawing.Size(139, 21);
             this.voiceCombo.TabIndex = 20;
+            // 
+            // defaultdpiLabel
+            // 
+            this.defaultdpiLabel.AutoSize = true;
+            this.defaultdpiLabel.Location = new System.Drawing.Point(877, 193);
+            this.defaultdpiLabel.Name = "defaultdpiLabel";
+            this.defaultdpiLabel.Size = new System.Drawing.Size(13, 13);
+            this.defaultdpiLabel.TabIndex = 23;
+            this.defaultdpiLabel.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(737, 172);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Default DPI";
+            // 
+            // defaultdpiBar
+            // 
+            this.defaultdpiBar.Location = new System.Drawing.Point(740, 188);
+            this.defaultdpiBar.Maximum = 600;
+            this.defaultdpiBar.Minimum = 50;
+            this.defaultdpiBar.Name = "defaultdpiBar";
+            this.defaultdpiBar.Size = new System.Drawing.Size(139, 45);
+            this.defaultdpiBar.TabIndex = 21;
+            this.defaultdpiBar.Value = 50;
+            this.defaultdpiBar.Scroll += new System.EventHandler(this.defaultdpiBar_Scroll);
             // 
             // MainForm
             // 
@@ -358,6 +391,9 @@ namespace GameOCRTTS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 334);
             this.ContextMenuStrip = this.contextMenu;
+            this.Controls.Add(this.defaultdpiLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.defaultdpiBar);
             this.Controls.Add(this.voiceCombo);
             this.Controls.Add(this.voiceComboLabel);
             this.Controls.Add(this.settingsLabel);
@@ -387,6 +423,7 @@ namespace GameOCRTTS
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).EndInit();
             this.contextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.defaultdpiBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,6 +464,9 @@ namespace GameOCRTTS
         private System.Windows.Forms.Label settingsLabel;
         private System.Windows.Forms.Label voiceComboLabel;
         private System.Windows.Forms.ComboBox voiceCombo;
+        private System.Windows.Forms.Label defaultdpiLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar defaultdpiBar;
     }
 }
 
