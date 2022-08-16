@@ -43,9 +43,7 @@ namespace GameOCRTTS
             if (e.Modifier == SpecialKeys.Control)
             {
                 Color color = ImageProc.GetColorFromCurrentPixel();
-                _OCR.Brightest = color;
-                colorPanel.BackColor = color;
-                SFXPlayer.PlayOK();
+                SetTextColor(color);
                 return;
             }
             else
@@ -139,8 +137,15 @@ namespace GameOCRTTS
             if (colorSelect.ShowDialog() != DialogResult.OK)
                 return;
 
-            _OCR.Brightest = colorSelect.Color;
+            SetTextColor(colorSelect.Color);
+        }
+
+        private void SetTextColor(Color color)
+        {
+            _OCR.Brightest = color;
             colorPanel.BackColor = _OCR.Brightest;
+            string colorname = ImageProc.ColorToText(color);
+            TTS.SpeakOut(colorname);            
         }
 
         private void distanceBar_Scroll(object sender, EventArgs e)

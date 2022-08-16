@@ -1,6 +1,10 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace GameOCRTTS
@@ -122,6 +126,20 @@ namespace GameOCRTTS
             g.Dispose();
 
             return bm;
+        }
+
+        internal static string ColorToText(Color color)
+        {
+            int R = color.R;
+            int G = color.G;
+            int B = color.B;
+
+            var colorprops = typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var colors = new List<Color>();
+            colors.AddRange(colorprops.Select(x => (Color)x.GetValue(null, null)).Where(x => x.Name != Color.Transparent.Name).ToList());
+            Color nearest = colors.OrderBy(x => Math.Abs(x.R - R) + Math.Abs(x.G - G) + Math.Abs(x.B - B)).First();
+
+            return nearest.Name;
         }
     }
 }
