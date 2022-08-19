@@ -222,6 +222,11 @@ namespace GameOCRTTS
             _OCR.DefaultScaleDPI = defaultdpiBar.Value;
             defaultdpiLabel.Text = defaultdpiBar.Value.ToString();
         }
+
+        private void contextMenuLicense_Click(object sender, EventArgs e)
+        {
+            Process.Start($"https://github.com/{_LiveUpdater.Repository}/blob/master/LICENSE.md");
+        }
         // End of context menu links.
     }
 }
