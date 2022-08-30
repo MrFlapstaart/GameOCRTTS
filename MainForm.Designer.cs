@@ -59,15 +59,15 @@ namespace GameOCRTTS
             this.contextMenuIssuesOther = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuVersionCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.selectColorLabel = new System.Windows.Forms.Label();
             this.settingsLabel = new System.Windows.Forms.Label();
             this.voiceComboLabel = new System.Windows.Forms.Label();
             this.voiceCombo = new System.Windows.Forms.ComboBox();
             this.defaultdpiLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.defaultdpiBarLabel = new System.Windows.Forms.Label();
             this.defaultdpiBar = new System.Windows.Forms.TrackBar();
-            this.contextMenuLicense = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).BeginInit();
@@ -239,14 +239,14 @@ namespace GameOCRTTS
             // contextMenuGitHub
             // 
             this.contextMenuGitHub.Name = "contextMenuGitHub";
-            this.contextMenuGitHub.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuGitHub.Size = new System.Drawing.Size(141, 22);
             this.contextMenuGitHub.Text = "GitHub page";
             this.contextMenuGitHub.Click += new System.EventHandler(this.contextMenuGitHub_Click);
             // 
             // contextMenuHelp
             // 
             this.contextMenuHelp.Name = "contextMenuHelp";
-            this.contextMenuHelp.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuHelp.Size = new System.Drawing.Size(141, 22);
             this.contextMenuHelp.Text = "Help";
             this.contextMenuHelp.Click += new System.EventHandler(this.contextMenuHelp_Click);
             // 
@@ -259,7 +259,7 @@ namespace GameOCRTTS
             this.contextMenuIssuesDontKnow,
             this.contextMenuIssuesOther});
             this.contextMenuIssues.Name = "contextMenuIssues";
-            this.contextMenuIssues.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssues.Size = new System.Drawing.Size(141, 22);
             this.contextMenuIssues.Text = "Problems?";
             // 
             // contextMenuIssuesDesign
@@ -307,19 +307,26 @@ namespace GameOCRTTS
             this.contextMenuLicense,
             this.contextMenuAbout});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(181, 158);
+            this.contextMenu.Size = new System.Drawing.Size(142, 136);
             // 
             // contextMenuVersionCheck
             // 
             this.contextMenuVersionCheck.Name = "contextMenuVersionCheck";
-            this.contextMenuVersionCheck.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuVersionCheck.Size = new System.Drawing.Size(141, 22);
             this.contextMenuVersionCheck.Text = "Live Update";
             this.contextMenuVersionCheck.Click += new System.EventHandler(this.contextMenuVersionCheck_Click);
+            // 
+            // contextMenuLicense
+            // 
+            this.contextMenuLicense.Name = "contextMenuLicense";
+            this.contextMenuLicense.Size = new System.Drawing.Size(141, 22);
+            this.contextMenuLicense.Text = "License";
+            this.contextMenuLicense.Click += new System.EventHandler(this.contextMenuLicense_Click);
             // 
             // contextMenuAbout
             // 
             this.contextMenuAbout.Name = "contextMenuAbout";
-            this.contextMenuAbout.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuAbout.Size = new System.Drawing.Size(141, 22);
             this.contextMenuAbout.Text = "About";
             this.contextMenuAbout.Click += new System.EventHandler(this.contextMenuAbout_Click);
             // 
@@ -367,14 +374,14 @@ namespace GameOCRTTS
             this.defaultdpiLabel.TabIndex = 23;
             this.defaultdpiLabel.Text = "0";
             // 
-            // label2
+            // defaultdpiBarLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(737, 172);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Default DPI";
+            this.defaultdpiBarLabel.AutoSize = true;
+            this.defaultdpiBarLabel.Location = new System.Drawing.Point(737, 172);
+            this.defaultdpiBarLabel.Name = "defaultdpiBarLabel";
+            this.defaultdpiBarLabel.Size = new System.Drawing.Size(62, 13);
+            this.defaultdpiBarLabel.TabIndex = 22;
+            this.defaultdpiBarLabel.Text = "Default DPI";
             // 
             // defaultdpiBar
             // 
@@ -387,13 +394,6 @@ namespace GameOCRTTS
             this.defaultdpiBar.Value = 50;
             this.defaultdpiBar.Scroll += new System.EventHandler(this.defaultdpiBar_Scroll);
             // 
-            // contextMenuLicense
-            // 
-            this.contextMenuLicense.Name = "contextMenuLicense";
-            this.contextMenuLicense.Size = new System.Drawing.Size(180, 22);
-            this.contextMenuLicense.Text = "License";
-            this.contextMenuLicense.Click += new System.EventHandler(this.contextMenuLicense_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,7 +401,7 @@ namespace GameOCRTTS
             this.ClientSize = new System.Drawing.Size(905, 334);
             this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.defaultdpiLabel);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.defaultdpiBarLabel);
             this.Controls.Add(this.defaultdpiBar);
             this.Controls.Add(this.voiceCombo);
             this.Controls.Add(this.voiceComboLabel);
@@ -474,7 +474,7 @@ namespace GameOCRTTS
         private System.Windows.Forms.Label voiceComboLabel;
         private System.Windows.Forms.ComboBox voiceCombo;
         private System.Windows.Forms.Label defaultdpiLabel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label defaultdpiBarLabel;
         private System.Windows.Forms.TrackBar defaultdpiBar;
         private System.Windows.Forms.ToolStripMenuItem contextMenuLicense;
     }
