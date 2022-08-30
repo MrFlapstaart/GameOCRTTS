@@ -1,0 +1,3 @@
+- OCR optimization by @MrFlapstaart 
+- Says the selected and picked color name by @MrFlapstaart 
+- Label name fix by @wrt54g
