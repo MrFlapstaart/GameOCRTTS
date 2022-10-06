@@ -2,7 +2,7 @@ name: 'Lock'
 
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '59 * * * *'
 
 permissions:
   issues: write
