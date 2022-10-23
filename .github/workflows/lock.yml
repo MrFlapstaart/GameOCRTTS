@@ -2,14 +2,14 @@ name: 'Lock'
 
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '59 * * * *'
 
 permissions:
   issues: write
   pull-requests: write
 
 jobs:
-  action:
+  lock:
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/lock-threads@v3
