@@ -195,11 +195,11 @@ namespace GameOCRTTS
         {            
             if (_LiveUpdater.NewerVersionAvailable())
             {
-                // Show interactive MessageBox
+                // Show interactive MessageBox.
                 DialogResult dr = MessageBox.Show($"A newer version is available online. Download now?\n\n" +
                     $"Current version: {_LiveUpdater.CurrentVersion}\n" +
                     $"Latest version: {_LiveUpdater.LatestVersion}",
-                          "Version Checker", MessageBoxButtons.YesNo);
+                          "Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
                     // Run installer and close program.
