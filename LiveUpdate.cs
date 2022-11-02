@@ -50,6 +50,7 @@ namespace GameOCRTTS
 
         public void DownloadInstaller()
         {
+            // Prepare temp folder
             Directory.CreateDirectory(TempDir);
             string LatestVersionCleaned = LatestVersion.Replace("\n", "");
             // Download installer
