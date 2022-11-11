@@ -1,3 +1,4 @@
+#  Build guide not complete yet. Check back later
 # Building/compiling the project yourself.
 ## Prerequisites
 - Visual Studio 2019/2022
