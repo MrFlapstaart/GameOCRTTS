@@ -192,24 +192,31 @@ namespace GameOCRTTS
 
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
-        {            
-            if (_LiveUpdater.NewerVersionAvailable())
+        {
+            if (char.IsDigit(_LiveUpdater.LatestVersion[0]))
             {
-                // Show interactive MessageBox.
-                DialogResult dr = MessageBox.Show($"A newer version is available online. Download now?\n\n" +
-                    $"Current version: {_LiveUpdater.CurrentVersion}\n" +
-                    $"Latest version: {_LiveUpdater.LatestVersion}",
-                          "Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dr == DialogResult.Yes)
+                if (_LiveUpdater.NewerVersionAvailable())
                 {
-                    // Run installer and close program.
-                    _LiveUpdater.DownloadInstaller();
-                    Process.Start($"{_LiveUpdater.InstallerFileName}");
-                    Close();
-                }
+                // Show interactive MessageBox.
+
+
+                    DialogResult dr = MessageBox.Show($"A newer version is available online. Download now?\n\n" +
+                        $"Current version: {_LiveUpdater.CurrentVersion}\n" +
+                        $"Latest version: {_LiveUpdater.LatestVersion}",
+                              "Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)
+                    {
+                        // Run installer and close program.
+                        _LiveUpdater.DownloadInstaller();
+                        Process.Start($"{_LiveUpdater.InstallerFileName}");
+                        Close();
+                    }
+               }
+               else
+                    MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-                MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               else
+                   MessageBox.Show("Unable to get latest version number from the Live Update server.", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
