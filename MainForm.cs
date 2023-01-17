@@ -203,7 +203,7 @@ namespace GameOCRTTS
                     DialogResult dr = MessageBox.Show($"A newer version is available online. Download now?\n\n" +
                         $"Current version: {_LiveUpdater.CurrentVersion}\n" +
                         $"Latest version: {_LiveUpdater.LatestVersion}",
-                              "Version Checker", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                              "Live update", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dr == DialogResult.Yes)
                     {
                         // Run installer and close program.
@@ -213,10 +213,10 @@ namespace GameOCRTTS
                     }
                }
                else
-                    MessageBox.Show("You have the latest version", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("You have the latest version", "Live Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
                else
-                   MessageBox.Show("Unable to get latest version number from the Live Update server.", "Version Checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show("Unable to get latest version number from the Live Update server.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
