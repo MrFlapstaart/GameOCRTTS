@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GameOCRTTS")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("Speak out text balloons in games without voice acting to use OCR on the screenshot and uses TTS to read it aloud.")]
+[assembly: AssemblyDescription("Speak out text balloons in games without voice acting to use OCR on the screenshot and uses TTS to read it aloud.")]
+[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("@MrFlapstaart")]
 [assembly: AssemblyProduct("GameOCRTTS")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
