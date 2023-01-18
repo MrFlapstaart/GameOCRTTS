@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("GameOCRTTS")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyConfiguration("Speak out text balloons in games without voice acting to use OCR on the screenshot and uses TTS to read it aloud.")]
+[assembly: AssemblyCompany("@MrFlapstaart")]
 [assembly: AssemblyProduct("GameOCRTTS")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
