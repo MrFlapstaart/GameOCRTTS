@@ -39,7 +39,7 @@ namespace GameOCRTTS
 
         public bool NewerVersionAvailable()
         {
-            // Do web request
+            // Send web request.
             var request = (HttpWebRequest)WebRequest.Create($"https://raw.githubusercontent.com/{Repository}/master/releases/LatestVersionNumber");
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();

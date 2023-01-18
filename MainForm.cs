@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GameOCRTTS
@@ -193,7 +194,7 @@ namespace GameOCRTTS
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
-            if (char.IsDigit(_LiveUpdater.LatestVersion[0]))
+            if (char.IsDigit(_LiveUpdater.LatestVersion[0]))  // Check for captive portals.
             {
                 if (_LiveUpdater.NewerVersionAvailable())
                 {
@@ -208,6 +209,13 @@ namespace GameOCRTTS
                     {
                         // Run installer and close program.
                         _LiveUpdater.DownloadInstaller();
+
+                        int sizeInBytes = File.ReadAllBytes(_LiveUpdater.InstallerFileName).Length;
+                        if(sizeInBytes < 5000000)
+                        {
+                            MessageBox.Show("The Live Update server returned an invalid file.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         Process.Start($"{_LiveUpdater.InstallerFileName}");
                         Close();
                     }
