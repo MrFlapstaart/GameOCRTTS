@@ -20,5 +20,5 @@ This lets you choose an image file to test the OCR+TTS (the same as the ` key bu
 This tests the TTS function. It reads everything in the "Recognized Text" field out loud. For debugging purposes only.
 ### Remove Garbage
 This removes all the garbage from the Recognized Text field. This includes unnecessary spaces, letters, numbers and symbols.
-### Select text color
+### Select text color...
 With this button, you can manually select the text color for the text balloon detection. This method is not recommended, see CTRL+` for the recommended option.
