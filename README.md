@@ -4,6 +4,6 @@ Speak out text balloons in games without voice acting to use OCR on the screensh
 
 ## Errors
 ### Error opening image file
-The image file is invalid. This means that the file has an extension for an image file, but it's content is not an image. The file might have the wrong file extension or the file is corrupt.
+The image file is invalid. This means that the file has an extension for an image file, but it's content is not an image. The file might have the wrong file extension or it might be corrupt.
 ### Couldn’t register the hot key.
 <p>The program cannot assign the ` key. There might already be a second instance of the program running or the ` key is already used by another program on your computer.</p>
