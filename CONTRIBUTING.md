@@ -3,6 +3,7 @@
 - Create PRs against the `master` branch.
 - Test your changes first before opening a PR.
 # Files
+Quick explanation of what the .cs files are for. 
 ## ImageProc.cs
 This file is for the image processing (removing unnecessary characters from the regognized text). The button "Remove Garbage" manually triggers this.
 ## KeyboardHook.cs
