@@ -49,7 +49,7 @@ namespace GameOCRTTS
         private void licenseButton_Click(object sender, EventArgs e)
         {
             LicenseForm licenseform = new LicenseForm();
-            licenseform.Show();
+            licenseform.ShowDialog();
         }
     }
 }

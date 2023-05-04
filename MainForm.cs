@@ -229,13 +229,13 @@ namespace GameOCRTTS
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
             AboutForm aboutform = new AboutForm();
-            aboutform.Show();
+            aboutform.ShowDialog();
         }
 
         private void contextMenuLicense_Click(object sender, EventArgs e)
         {
             LicenseForm licenseform = new LicenseForm();
-            licenseform.Show();
+            licenseform.ShowDialog();
         }
         // End of context menu links.
         private void defaultdpiBar_Scroll(object sender, EventArgs e)
