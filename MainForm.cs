@@ -189,6 +189,7 @@ namespace GameOCRTTS
         // End of issue tracker links.
         private void contextMenuVersionCheck_Click(object sender, EventArgs e)
         {
+            // Begin of Live Update.
             if (char.IsDigit(_LiveUpdater.LatestVersion[0]))  // Check for captive portals.
             {
                 if (_LiveUpdater.NewerVersionAvailable())
@@ -205,6 +206,7 @@ namespace GameOCRTTS
                         // Run installer and close program.
                         _LiveUpdater.DownloadInstaller();
 
+                        // If the installer file is too small, show an error.
                         int sizeInBytes = File.ReadAllBytes(_LiveUpdater.InstallerFileName).Length;
                         if(sizeInBytes < 5000000)
                         {
@@ -221,17 +223,12 @@ namespace GameOCRTTS
                else
                    MessageBox.Show("Unable to retrieve latest version number from the Live Update server.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+        // End of Live Update.
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
             AboutForm aboutform = new AboutForm();
             aboutform.Show();
-        }
-
-        private void defaultdpiBar_Scroll(object sender, EventArgs e)
-        {
-            _OCR.DefaultScaleDPI = defaultdpiBar.Value;
-            defaultdpiLabel.Text = defaultdpiBar.Value.ToString();
         }
 
         private void contextMenuLicense_Click(object sender, EventArgs e)
@@ -240,5 +237,10 @@ namespace GameOCRTTS
             licenseform.Show();
         }
         // End of context menu links.
+        private void defaultdpiBar_Scroll(object sender, EventArgs e)
+        {
+            _OCR.DefaultScaleDPI = defaultdpiBar.Value;
+            defaultdpiLabel.Text = defaultdpiBar.Value.ToString();
+        }
     }
 }
