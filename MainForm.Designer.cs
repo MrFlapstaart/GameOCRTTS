@@ -417,7 +417,7 @@ namespace GameOCRTTS
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Game OCR TTS";
+            this.Text = "GameOCRTTS";
             ((System.ComponentModel.ISupportInitialize)(this.rawImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.distanceBar)).EndInit();
