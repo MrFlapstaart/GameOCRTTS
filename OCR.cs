@@ -13,7 +13,7 @@ namespace GameOCRTTS
         private TesseractEngine _Engine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default);
         
         public Color Brightest { get; set; } = Color.White;
-        public int FadeDistance { get; set; } = 15;
+        public int FadeDistance { get; set; } = 20;
         public int DefaultScaleDPI { get; set; } = 125;
         public int UpscaledDPI { get; set; } = 300;
         public int UpscaleWidth { get; set; } = 1024;
