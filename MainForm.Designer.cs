@@ -182,8 +182,7 @@ namespace GameOCRTTS
             // 
             // imageOpenDialog
             // 
-            this.imageOpenDialog.Filter = "All Image Files (*.png, *.tiff, *.jpg, *.jpeg, *.bmp)|*.png;*.jpg;*.bmp;*.tiff;*." +
-    "jpeg";
+            this.imageOpenDialog.Filter = "All Image Files (*.png, *.tiff, *.jpg, *.jpeg)|*.png;*.jpg;*.tiff;*.jpeg";
             // 
             // colorSelect
             // 
