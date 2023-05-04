@@ -263,28 +263,28 @@ namespace GameOCRTTS
             // contextMenuIssuesOCR
             // 
             this.contextMenuIssuesOCR.Name = "contextMenuIssuesOCR";
-            this.contextMenuIssuesOCR.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssuesOCR.Size = new System.Drawing.Size(140, 22);
             this.contextMenuIssuesOCR.Text = "OCR";
             this.contextMenuIssuesOCR.Click += new System.EventHandler(this.contextMenuIssuesOCR_Click);
             // 
             // contextMenuIssuesTTS
             // 
             this.contextMenuIssuesTTS.Name = "contextMenuIssuesTTS";
-            this.contextMenuIssuesTTS.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssuesTTS.Size = new System.Drawing.Size(140, 22);
             this.contextMenuIssuesTTS.Text = "TTS";
             this.contextMenuIssuesTTS.Click += new System.EventHandler(this.contextMenuIssuesTTS_Click);
             // 
             // contextMenuIssuesDontKnow
             // 
             this.contextMenuIssuesDontKnow.Name = "contextMenuIssuesDontKnow";
-            this.contextMenuIssuesDontKnow.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssuesDontKnow.Size = new System.Drawing.Size(140, 22);
             this.contextMenuIssuesDontKnow.Text = "I don\'t know";
             this.contextMenuIssuesDontKnow.Click += new System.EventHandler(this.contextMenuIssuesDontKnow_Click);
             // 
             // contextMenuIssuesOther
             // 
             this.contextMenuIssuesOther.Name = "contextMenuIssuesOther";
-            this.contextMenuIssuesOther.Size = new System.Drawing.Size(180, 22);
+            this.contextMenuIssuesOther.Size = new System.Drawing.Size(140, 22);
             this.contextMenuIssuesOther.Text = "Other";
             this.contextMenuIssuesOther.Click += new System.EventHandler(this.contextMenuIssuesOther_Click);
             // 
@@ -326,9 +326,9 @@ namespace GameOCRTTS
             this.selectColorLabel.AutoSize = true;
             this.selectColorLabel.Location = new System.Drawing.Point(737, 69);
             this.selectColorLabel.Name = "selectColorLabel";
-            this.selectColorLabel.Size = new System.Drawing.Size(117, 13);
+            this.selectColorLabel.Size = new System.Drawing.Size(120, 13);
             this.selectColorLabel.TabIndex = 17;
-            this.selectColorLabel.Text = "Text Balloon Font Color";
+            this.selectColorLabel.Text = "Text Balloon Font Color:";
             // 
             // settingsLabel
             // 
