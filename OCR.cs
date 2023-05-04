@@ -18,7 +18,7 @@ namespace GameOCRTTS
         public int UpscaledDPI { get; set; } = 300;
         public int UpscaleWidth { get; set; } = 1024;
 
-        public OCRResult HandleOCR(Bitmap bitmap, bool forcefullscale)
+        public OCRResult HandleOCR(Bitmap bitmap, bool forcefullscale, bool keepColors)
         {
             Logger.AddLog("Rescaling image.");
             Image resultimage;
@@ -32,7 +32,8 @@ namespace GameOCRTTS
                 resultimage = ImageProc.Rescale(bitmap, DefaultScaleDPI, DefaultScaleDPI);
 
             Logger.AddLog("Stripping colors from image.");
-            resultimage = ImageProc.StripColorsFromImage(resultimage, Brightest, FadeDistance);
+            if (!keepColors)
+                resultimage = ImageProc.StripColorsFromImage(resultimage, Brightest, FadeDistance);
 
             Logger.AddLog("Handle OCR.");
             TextBlock block = GetTextFromImage(resultimage);

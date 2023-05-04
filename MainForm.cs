@@ -22,6 +22,7 @@ namespace GameOCRTTS
             _Hook.RegisterHotKey(SpecialKeys.None, Keys.Oem3);
             _Hook.RegisterHotKey(SpecialKeys.Control, Keys.Oem3);
             _Hook.RegisterHotKey(SpecialKeys.Shift, Keys.Oem3);
+            _Hook.RegisterHotKey(SpecialKeys.Alt, Keys.Oem3);
 
             InitializeComponent();
 
@@ -55,7 +56,7 @@ namespace GameOCRTTS
                 Logger.AddLog("Capture screenshot.");
                 Bitmap bitmap = ImageProc.CaptureScreenshot(bounds);
 
-                ProcessImage(bitmap, e.Modifier == SpecialKeys.Shift);
+                ProcessImage(bitmap, e.Modifier == SpecialKeys.Shift, e.Modifier == SpecialKeys.Alt);
             }
         }
                 
@@ -70,7 +71,7 @@ namespace GameOCRTTS
             {
                 Image testimage = Bitmap.FromFile(imageOpenDialog.FileName);
                 Bitmap bitmap = new Bitmap(testimage);
-                ProcessImage(bitmap, false);
+                ProcessImage(bitmap, false, false);
             }
             catch
             {
@@ -80,9 +81,9 @@ namespace GameOCRTTS
             } 
         }
 
-        private void ProcessImage(Bitmap bitmap, bool forcefullscale)
+        private void ProcessImage(Bitmap bitmap, bool forcefullscale, bool keepColors)
         {                  
-            OCRResult result = _OCR.HandleOCR(bitmap, forcefullscale);
+            OCRResult result = _OCR.HandleOCR(bitmap, forcefullscale, keepColors);
             Image resultimage = result.ProcessedImage;            
             ocrBox.Text = result.ResultText;
             Logger.AddLog("Original text: " + result.OriginalText);
