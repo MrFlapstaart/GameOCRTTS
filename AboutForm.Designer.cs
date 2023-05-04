@@ -42,7 +42,11 @@
             this.readmeButton = new System.Windows.Forms.Button();
             this.changelogButton = new System.Windows.Forms.Button();
             this.licenseButton = new System.Windows.Forms.Button();
+            this.mrflapstaartAvatar = new System.Windows.Forms.PictureBox();
+            this.wrt54gAvatar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.programIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrflapstaartAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wrt54gAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // programIcon
@@ -88,7 +92,7 @@
             // 
             this.mrflapstaartLabel.AutoSize = true;
             this.mrflapstaartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mrflapstaartLabel.Location = new System.Drawing.Point(154, 83);
+            this.mrflapstaartLabel.Location = new System.Drawing.Point(174, 83);
             this.mrflapstaartLabel.Name = "mrflapstaartLabel";
             this.mrflapstaartLabel.Size = new System.Drawing.Size(115, 20);
             this.mrflapstaartLabel.TabIndex = 4;
@@ -100,7 +104,7 @@
             // 
             this.textLabel2.AutoSize = true;
             this.textLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLabel2.Location = new System.Drawing.Point(265, 83);
+            this.textLabel2.Location = new System.Drawing.Point(285, 83);
             this.textLabel2.Name = "textLabel2";
             this.textLabel2.Size = new System.Drawing.Size(36, 20);
             this.textLabel2.TabIndex = 5;
@@ -110,7 +114,7 @@
             // 
             this.wrt54gLabel.AutoSize = true;
             this.wrt54gLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wrt54gLabel.Location = new System.Drawing.Point(296, 83);
+            this.wrt54gLabel.Location = new System.Drawing.Point(345, 83);
             this.wrt54gLabel.Name = "wrt54gLabel";
             this.wrt54gLabel.Size = new System.Drawing.Size(73, 20);
             this.wrt54gLabel.TabIndex = 6;
@@ -122,7 +126,7 @@
             // 
             this.textLabel3.AutoSize = true;
             this.textLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textLabel3.Location = new System.Drawing.Point(367, 83);
+            this.textLabel3.Location = new System.Drawing.Point(416, 83);
             this.textLabel3.Name = "textLabel3";
             this.textLabel3.Size = new System.Drawing.Size(13, 20);
             this.textLabel3.TabIndex = 7;
@@ -132,7 +136,7 @@
             // 
             this.linksLabel.AutoSize = true;
             this.linksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linksLabel.Location = new System.Drawing.Point(154, 121);
+            this.linksLabel.Location = new System.Drawing.Point(201, 121);
             this.linksLabel.Name = "linksLabel";
             this.linksLabel.Size = new System.Drawing.Size(58, 24);
             this.linksLabel.TabIndex = 8;
@@ -143,7 +147,7 @@
             this.githubpageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.githubpageButton.Location = new System.Drawing.Point(21, 162);
             this.githubpageButton.Name = "githubpageButton";
-            this.githubpageButton.Size = new System.Drawing.Size(161, 41);
+            this.githubpageButton.Size = new System.Drawing.Size(191, 41);
             this.githubpageButton.TabIndex = 9;
             this.githubpageButton.Text = "Project page";
             this.githubpageButton.UseVisualStyleBackColor = true;
@@ -152,9 +156,9 @@
             // readmeButton
             // 
             this.readmeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.readmeButton.Location = new System.Drawing.Point(199, 162);
+            this.readmeButton.Location = new System.Drawing.Point(218, 162);
             this.readmeButton.Name = "readmeButton";
-            this.readmeButton.Size = new System.Drawing.Size(161, 41);
+            this.readmeButton.Size = new System.Drawing.Size(192, 41);
             this.readmeButton.TabIndex = 10;
             this.readmeButton.Text = "README file";
             this.readmeButton.UseVisualStyleBackColor = true;
@@ -165,7 +169,7 @@
             this.changelogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changelogButton.Location = new System.Drawing.Point(21, 209);
             this.changelogButton.Name = "changelogButton";
-            this.changelogButton.Size = new System.Drawing.Size(161, 41);
+            this.changelogButton.Size = new System.Drawing.Size(192, 41);
             this.changelogButton.TabIndex = 11;
             this.changelogButton.Text = "View changelog";
             this.changelogButton.UseVisualStyleBackColor = true;
@@ -174,19 +178,41 @@
             // licenseButton
             // 
             this.licenseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.licenseButton.Location = new System.Drawing.Point(199, 209);
+            this.licenseButton.Location = new System.Drawing.Point(219, 209);
             this.licenseButton.Name = "licenseButton";
-            this.licenseButton.Size = new System.Drawing.Size(161, 41);
+            this.licenseButton.Size = new System.Drawing.Size(191, 41);
             this.licenseButton.TabIndex = 13;
             this.licenseButton.Text = "View license";
             this.licenseButton.UseVisualStyleBackColor = true;
             this.licenseButton.Click += new System.EventHandler(this.licenseButton_Click);
             // 
+            // mrflapstaartAvatar
+            // 
+            this.mrflapstaartAvatar.Image = ((System.Drawing.Image)(resources.GetObject("mrflapstaartAvatar.Image")));
+            this.mrflapstaartAvatar.Location = new System.Drawing.Point(154, 83);
+            this.mrflapstaartAvatar.Name = "mrflapstaartAvatar";
+            this.mrflapstaartAvatar.Size = new System.Drawing.Size(23, 19);
+            this.mrflapstaartAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mrflapstaartAvatar.TabIndex = 14;
+            this.mrflapstaartAvatar.TabStop = false;
+            // 
+            // wrt54gAvatar
+            // 
+            this.wrt54gAvatar.Image = ((System.Drawing.Image)(resources.GetObject("wrt54gAvatar.Image")));
+            this.wrt54gAvatar.Location = new System.Drawing.Point(323, 84);
+            this.wrt54gAvatar.Name = "wrt54gAvatar";
+            this.wrt54gAvatar.Size = new System.Drawing.Size(23, 19);
+            this.wrt54gAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.wrt54gAvatar.TabIndex = 15;
+            this.wrt54gAvatar.TabStop = false;
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 273);
+            this.ClientSize = new System.Drawing.Size(437, 273);
+            this.Controls.Add(this.wrt54gAvatar);
+            this.Controls.Add(this.mrflapstaartAvatar);
             this.Controls.Add(this.licenseButton);
             this.Controls.Add(this.changelogButton);
             this.Controls.Add(this.readmeButton);
@@ -208,6 +234,8 @@
             this.Text = "About GameOCRTTS";
             this.Load += new System.EventHandler(this.AboutForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.programIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mrflapstaartAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wrt54gAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +256,7 @@
         private System.Windows.Forms.Button readmeButton;
         private System.Windows.Forms.Button changelogButton;
         private System.Windows.Forms.Button licenseButton;
+        private System.Windows.Forms.PictureBox mrflapstaartAvatar;
+        private System.Windows.Forms.PictureBox wrt54gAvatar;
     }
 }
