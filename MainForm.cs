@@ -208,7 +208,7 @@ namespace GameOCRTTS
                         int sizeInBytes = File.ReadAllBytes(_LiveUpdater.InstallerFileName).Length;
                         if(sizeInBytes < 5000000)
                         {
-                            MessageBox.Show("The Live Update server returned an invalid file.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The Live Update server returned an invalid installer file.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         Process.Start($"{_LiveUpdater.InstallerFileName}");
