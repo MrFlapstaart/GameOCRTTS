@@ -224,7 +224,8 @@ namespace GameOCRTTS
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"{_LiveUpdater.Product} version {_LiveUpdater.CurrentVersion} by @MrFlapstaart and @wrt54g", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AboutForm aboutform = new AboutForm();
+            aboutform.Show();
         }
 
         private void defaultdpiBar_Scroll(object sender, EventArgs e)
@@ -235,7 +236,8 @@ namespace GameOCRTTS
 
         private void contextMenuLicense_Click(object sender, EventArgs e)
         {
-            Process.Start($"https://github.com/{_LiveUpdater.Repository}/blob/master/LICENSE.md");
+            LicenseForm licenseform = new LicenseForm();
+            licenseform.Show();
         }
         // End of context menu links.
     }
