@@ -136,7 +136,7 @@
             // 
             this.linksLabel.AutoSize = true;
             this.linksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linksLabel.Location = new System.Drawing.Point(201, 121);
+            this.linksLabel.Location = new System.Drawing.Point(201, 107);
             this.linksLabel.Name = "linksLabel";
             this.linksLabel.Size = new System.Drawing.Size(58, 24);
             this.linksLabel.TabIndex = 8;
@@ -145,7 +145,7 @@
             // githubpageButton
             // 
             this.githubpageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.githubpageButton.Location = new System.Drawing.Point(21, 162);
+            this.githubpageButton.Location = new System.Drawing.Point(21, 148);
             this.githubpageButton.Name = "githubpageButton";
             this.githubpageButton.Size = new System.Drawing.Size(191, 41);
             this.githubpageButton.TabIndex = 9;
@@ -156,7 +156,7 @@
             // readmeButton
             // 
             this.readmeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.readmeButton.Location = new System.Drawing.Point(218, 162);
+            this.readmeButton.Location = new System.Drawing.Point(218, 148);
             this.readmeButton.Name = "readmeButton";
             this.readmeButton.Size = new System.Drawing.Size(192, 41);
             this.readmeButton.TabIndex = 10;
@@ -167,7 +167,7 @@
             // changelogButton
             // 
             this.changelogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changelogButton.Location = new System.Drawing.Point(21, 209);
+            this.changelogButton.Location = new System.Drawing.Point(21, 195);
             this.changelogButton.Name = "changelogButton";
             this.changelogButton.Size = new System.Drawing.Size(192, 41);
             this.changelogButton.TabIndex = 11;
@@ -178,7 +178,7 @@
             // licenseButton
             // 
             this.licenseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.licenseButton.Location = new System.Drawing.Point(219, 209);
+            this.licenseButton.Location = new System.Drawing.Point(219, 195);
             this.licenseButton.Name = "licenseButton";
             this.licenseButton.Size = new System.Drawing.Size(191, 41);
             this.licenseButton.TabIndex = 13;
@@ -210,7 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 273);
+            this.ClientSize = new System.Drawing.Size(437, 242);
             this.Controls.Add(this.wrt54gAvatar);
             this.Controls.Add(this.mrflapstaartAvatar);
             this.Controls.Add(this.licenseButton);
