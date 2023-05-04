@@ -219,7 +219,7 @@ namespace GameOCRTTS
                     MessageBox.Show("You have the latest version", "Live Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
                else
-                   MessageBox.Show("Unable to get latest version number from the Live Update server.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show("Unable to retrieve latest version number from the Live Update server.", "Live update", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void contextMenuAbout_Click(object sender, EventArgs e)
