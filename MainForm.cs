@@ -10,7 +10,7 @@ namespace GameOCRTTS
     public partial class MainForm : Form
     {
         private KeyboardHook _Hook = new KeyboardHook();        
-        private static readonly string GithubUsername = "MrFlapstaart";
+        public static readonly string GithubUsername = "MrFlapstaart";
         private LiveUpdate _LiveUpdater = new LiveUpdate(GithubUsername);
         private OCR _OCR = new OCR();
 
@@ -166,12 +166,7 @@ namespace GameOCRTTS
             Process.Start($"https://github.com/{_LiveUpdater.Repository}");
         }
         // Issue tracker links.
-        private void contextMenuIssuesDesign_Click(object sender, EventArgs e)
-        {
-            Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new?assignees=MrFlapstaart&labels=design&template=design.md&title=");
-        }
-
-        private void contextMenuIssuesOCR_Click(object sender, EventArgs e)
+         private void contextMenuIssuesOCR_Click(object sender, EventArgs e)
         {
             Process.Start($"https://github.com/{_LiveUpdater.Repository}/issues/new?assignees=MrFlapstaart&labels=ocr&template=ocr.md&title=");
         }

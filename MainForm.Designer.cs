@@ -52,7 +52,6 @@ namespace GameOCRTTS
             this.contextMenuGitHub = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuIssues = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuIssuesDesign = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuIssuesOCR = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuIssuesTTS = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuIssuesDontKnow = new System.Windows.Forms.ToolStripMenuItem();
@@ -253,7 +252,6 @@ namespace GameOCRTTS
             // contextMenuIssues
             // 
             this.contextMenuIssues.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextMenuIssuesDesign,
             this.contextMenuIssuesOCR,
             this.contextMenuIssuesTTS,
             this.contextMenuIssuesDontKnow,
@@ -262,38 +260,31 @@ namespace GameOCRTTS
             this.contextMenuIssues.Size = new System.Drawing.Size(141, 22);
             this.contextMenuIssues.Text = "Problems?";
             // 
-            // contextMenuIssuesDesign
-            // 
-            this.contextMenuIssuesDesign.Name = "contextMenuIssuesDesign";
-            this.contextMenuIssuesDesign.Size = new System.Drawing.Size(140, 22);
-            this.contextMenuIssuesDesign.Text = "Design";
-            this.contextMenuIssuesDesign.Click += new System.EventHandler(this.contextMenuIssuesDesign_Click);
-            // 
             // contextMenuIssuesOCR
             // 
             this.contextMenuIssuesOCR.Name = "contextMenuIssuesOCR";
-            this.contextMenuIssuesOCR.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesOCR.Size = new System.Drawing.Size(180, 22);
             this.contextMenuIssuesOCR.Text = "OCR";
             this.contextMenuIssuesOCR.Click += new System.EventHandler(this.contextMenuIssuesOCR_Click);
             // 
             // contextMenuIssuesTTS
             // 
             this.contextMenuIssuesTTS.Name = "contextMenuIssuesTTS";
-            this.contextMenuIssuesTTS.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesTTS.Size = new System.Drawing.Size(180, 22);
             this.contextMenuIssuesTTS.Text = "TTS";
             this.contextMenuIssuesTTS.Click += new System.EventHandler(this.contextMenuIssuesTTS_Click);
             // 
             // contextMenuIssuesDontKnow
             // 
             this.contextMenuIssuesDontKnow.Name = "contextMenuIssuesDontKnow";
-            this.contextMenuIssuesDontKnow.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesDontKnow.Size = new System.Drawing.Size(180, 22);
             this.contextMenuIssuesDontKnow.Text = "I don\'t know";
             this.contextMenuIssuesDontKnow.Click += new System.EventHandler(this.contextMenuIssuesDontKnow_Click);
             // 
             // contextMenuIssuesOther
             // 
             this.contextMenuIssuesOther.Name = "contextMenuIssuesOther";
-            this.contextMenuIssuesOther.Size = new System.Drawing.Size(140, 22);
+            this.contextMenuIssuesOther.Size = new System.Drawing.Size(180, 22);
             this.contextMenuIssuesOther.Text = "Other";
             this.contextMenuIssuesOther.Click += new System.EventHandler(this.contextMenuIssuesOther_Click);
             // 
@@ -461,7 +452,6 @@ namespace GameOCRTTS
         private System.Windows.Forms.ToolStripMenuItem contextMenuGitHub;
         private System.Windows.Forms.ToolStripMenuItem contextMenuHelp;
         private System.Windows.Forms.ToolStripMenuItem contextMenuIssues;
-        private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesDesign;
         private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesOCR;
         private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesTTS;
         private System.Windows.Forms.ToolStripMenuItem contextMenuIssuesDontKnow;

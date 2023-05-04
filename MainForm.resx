@@ -122,7 +122,7 @@
 When a text balloon appears in the game, use the ` key to read it out loud.
 
 By default the program assumes the text color is white,
-but you can use the "Select Text Color" button to set it to something different.</value>
+but you can use the "Select Text Color" button or point your mouse cursor inside the text of the text balloon and press CTRL+` to set it to something different.</value>
   </data>
   <metadata name="imageOpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
