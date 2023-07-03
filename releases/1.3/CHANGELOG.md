@@ -1,6 +1,7 @@
+![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.3/total)<br>
 Big changes to Update Check:
 - The update checker in the older releases will NOT work anymore.
-- The Update Check has become a Live Updater (it can download and launch the installer too)
+- The Update Check has become a Live Updater (it can now download and launch the installer too)
 Other changes:
 [Remove unnecessary dependencies](https://github.com/MrFlapstaart/GameOCRTTS/commit/ba093898e6d96b2ed4dbdab86fe2abee3b289a3e) by @wrt54g
 [Optimization of the Live Updater class. Adding currentVersion to the updater itself and dependency injection for the LiveUpdater class.](https://github.com/MrFlapstaart/GameOCRTTS/commit/b64e52a84f095ab57539677d41356734ba90383e) by @MrFlapstaart 
