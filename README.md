@@ -1,6 +1,6 @@
 ![Project Maintenance](https://img.shields.io/maintenance/yes/2023.svg?style=for-the-badge)
 ![Repository Size](https://img.shields.io/github/repo-size/MrFlapstaart/GameOCRTTS?style=for-the-badge)
-![Total Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/total)
+![Total Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/total?style=for-the-badge)
 # GameOCRTTS
 Speak out text balloons in games without voice acting to use OCR on the screenshot and uses TTS to read it aloud.
 
