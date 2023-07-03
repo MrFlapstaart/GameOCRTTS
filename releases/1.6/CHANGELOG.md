@@ -1,3 +1,4 @@
+![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.6/total?style=for-the-badge)<br>
 This release is containing bugfixes only, so no new features this time.
 
 Show error when the update installer file size is less than 5MB in [f3edc06](https://github.com/MrFlapstaart/GameOCRTTS/commit/f3edc06817f0a88a696d4afa4f75919fdec0ea6c) by [@wrt54g](https://github.com/wrt54g)<br>
