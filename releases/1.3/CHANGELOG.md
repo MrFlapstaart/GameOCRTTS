@@ -1,4 +1,4 @@
-![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.3/total)<br>
+![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.3/total?style=for-the-badge)<br>
 Big changes to Update Check:
 - The update checker in the older releases will NOT work anymore.
 - The Update Check has become a Live Updater (it can now download and launch the installer too)<br>
