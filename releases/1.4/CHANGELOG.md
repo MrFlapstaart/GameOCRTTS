@@ -1,4 +1,4 @@
-![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.4/total)<br>
+![Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/1.4/total?style=for-the-badge)<br>
 By [@MrFlapstaart](https://github.com/MrFlapstaart/) in commit https://github.com/MrFlapstaart/GameOCRTTS/commit/6ad782b6e95e481de96a80cb51805f8bb863105b
 - Voice selection
 - OCR optimization
