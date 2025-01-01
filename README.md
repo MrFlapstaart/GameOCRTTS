@@ -1,4 +1,4 @@
-![Project Maintenance](https://img.shields.io/maintenance/yes/2024.svg?style=for-the-badge)
+![Project Maintenance](https://img.shields.io/maintenance/yes/2025.svg?style=for-the-badge)
 ![Repository Size](https://img.shields.io/github/repo-size/MrFlapstaart/GameOCRTTS?style=for-the-badge)
 ![Total Downloads](https://img.shields.io/github/downloads/MrFlapstaart/GameOCRTTS/total?style=for-the-badge)
 # GameOCRTTS
